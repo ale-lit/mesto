@@ -1,6 +1,6 @@
 .place {
   width: 282px;
-  height: 361px;
+  min-height: 361px;
   background: linear-gradient(black 282px, white 282px);
   border-radius: 10px;
   color: #000;

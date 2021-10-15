@@ -32,7 +32,7 @@ closeButton.addEventListener('click', function(){
 // Add button
 const addButton = document.querySelector('.profile__add-button');
 function noFunctionalAlert() {
-  alert('Данный функционал пока не реализован..');
+  alert('Данный функционал ещё не реализован..');
 }
 addButton.addEventListener('click', noFunctionalAlert);
 
