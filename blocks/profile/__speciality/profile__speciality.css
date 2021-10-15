@@ -1,0 +1,8 @@
+.profile__speciality {
+  margin: 0;
+}
+@media screen and (max-width: 689px) {
+  .profile__speciality {
+    text-align: center;
+  }
+}

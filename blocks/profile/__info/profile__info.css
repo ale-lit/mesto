@@ -1,0 +1,8 @@
+.profile__info {
+  flex-basis: 550px;
+}
+@media screen and (max-width: 689px) {
+  .profile__info {
+    flex-basis: auto;
+  }
+}

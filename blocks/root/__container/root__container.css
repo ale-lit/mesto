@@ -1,0 +1,9 @@
+.root__container {
+  margin: 0 auto;
+  max-width: 880px;
+}
+@media screen and (max-width: 939px) {
+  .root__container {
+    padding: 0 19px;
+  }
+}
