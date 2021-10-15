@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Проект &laquo;Mesto&raquo;</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head>
 
@@ -73,6 +73,10 @@
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
+    transition: all .3s ease-in-out;
+  }
+  .profile__add-button:hover {
+    opacity: .6;
   }
   .profile__add-button::before {
     content: '';
@@ -81,9 +85,11 @@
     height: 22px;
     display: block;
     margin: auto;
+    transition: all .3s ease-in-out;
   }
   .profile__add-button:hover::before {
-    background: red;
+    1transform: scale(1.5);
+    transform: rotate(.75turn);
   }
 </style>
 <body class="root">
@@ -99,7 +105,7 @@
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <p class="profile__speciality">Исследователь океана</p>
       </div>
-      <div class="profile__add-button" title="Добавить место"></div>
+      <div class="profile__add-button" title="Добавить новое место"></div>
     </section>
 
     <style>
@@ -134,13 +140,16 @@
         margin: 20px auto 0;
         align-items: center;
       }
-      .place__info::after {
-        content: '';
+      .place__like {
         display: block;
-        min-width: 22px;
+        width: 22px;
         height: 19px;
         background: url(./images/svg/like-inactive.svg);
         cursor: pointer;
+        transition: all .3s ease-in-out;
+      }
+      .place__like:hover {
+        opacity: .5;
       }
       .place__name {
         margin: 0;
@@ -156,27 +165,27 @@
       <ul class="places">
         <li class="place">
           <img src="./images/places/kamchatka.jpg" alt="Камчатка" class="place__photo">
-          <div class="place__info"><p class="place__name">Камчатка</p></div>
+          <div class="place__info"><p class="place__name">Камчатка</p><span class="place__like"></span></div>
         </li>
         <li class="place">
           <img src="./images/places/sochi.jpg" alt="Сочи" class="place__photo">
-          <div class="place__info"><p class="place__name">Сочи</p></div>
+          <div class="place__info"><p class="place__name">Сочи</p><span class="place__like"></span></div>
         </li>
         <li class="place">
           <img src="./images/places/gelendjick.jpg" alt="Геленджик" class="place__photo">
-          <div class="place__info"><p class="place__name">Геленджик</p></div>
+          <div class="place__info"><p class="place__name">Геленджик</p><span class="place__like"></span></div>
         </li>
         <li class="place">
           <img src="./images/places/sudak.jpg" alt="Судак" class="place__photo">
-          <div class="place__info"><p class="place__name">Судак</p></div>
+          <div class="place__info"><p class="place__name">Судак</p><span class="place__like"></span></div>
         </li>
         <li class="place">
           <img src="./images/places/karelia.jpg" alt="Карелия" class="place__photo">
-          <div class="place__info"><p class="place__name">Карелия</p></div>
+          <div class="place__info"><p class="place__name">Карелия</p><span class="place__like"></span></div>
         </li>
         <li class="place">
           <img src="./images/places/pushkin.jpg" alt="Пушкин" class="place__photo">
-          <div class="place__info"><p class="place__name">Пушкин</p></div>
+          <div class="place__info"><p class="place__name">Пушкин</p><span class="place__like"></span></div>
         </li>
       </ul>
     </section>
