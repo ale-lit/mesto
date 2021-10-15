@@ -15,43 +15,146 @@
     padding: 45px 0 60px;
     color: #fff;
     font-family: 'Inter', sans-serif;
+    margin: 0;
+    font-size: 18px;
+    line-height: 22px;
   }
 
   .root__container {
     margin: 0 auto;
+    max-width: 880px;
   }
 
   .header {
-    max-width: 880px;
     min-height: 74px;
     border-bottom: 1px solid #545454;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding-top: 40px;
+  }
+
+  .profile__avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+
+  .profile__info {
+    flex-basis: 550px;
   }
 
   .profile__name {
     font-size: 42px;
     font-weight: 500;
+    margin: 0 0 8px;
+    line-height: 48px;
+  }
+  .profile__name::after {
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: url('./images/svg/edit.svg');
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 18px;
+  }
+  .profile__speciality {
     margin: 0;
+  }
+
+  .profile__add-button {
+    width: 150px;
+    height: 50px;
+    border: 2px solid #fff;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+  }
+  .profile__add-button::before {
+    content: '';
+    background: url('./images/svg/cross.svg');
+    width: 22px;
+    height: 22px;
+    display: block;
+    margin: auto;
+  }
+  .profile__add-button:hover::before {
+    background: red;
   }
 </style>
 <body class="root">
 
   <header class="header root__container">
-    <img src="./images/logo.svg" alt="Проект &laquo;Место&raquo;">
+    <img src="./images/svg/logo.svg" alt="Проект &laquo;Место&raquo;">
   </header>
 
   <main>
-    <section class="profile">
-      <h1 class="profile__name">Жак-Ив Кусто</h1>
-      <p class="subtitle">Исследователь океана</p>
+    <section class="profile root__container">
+      <img src="./images/kusto.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
+      <div class="profile__info">
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <p class="profile__speciality">Исследователь океана</p>
+      </div>
+      <div class="profile__add-button" title="Добавить место"></div>
     </section>
 
-    <section class="photo-grid">
-
+    <style>
+      .photo-grid {
+        padding: 46px 0 66px;
+      }
+      .places {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 20px 17px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .place {
+        width: 282px;
+        height: 361px;
+        background: #fff;
+        border-radius: 10px;
+        color: #000;
+      }
+      .place__photo {
+        width: 282px;
+        height: 282px;
+        border-radius: 10px 10px 0 0;
+      }
+      .place__name {
+        margin: 0;
+        font-weight: 900;
+        line-height: 29px;
+      }
+    </style>
+    <section class="photo-grid root__container">
+      <ul class="places">
+        <li class="place">
+          <img src="./images/places/karachaevsk.jpg" alt="" class="place__photo">
+          <p class="place__name">Карачаевск</p>
+        </li>
+        <li class="place"></li>
+        <li class="place"></li>
+        <li class="place"></li>
+        <li class="place"></li>
+        <li class="place"></li>
+      </ul>
     </section>
   </main>
 
-  <footer class="footer">
-
+  <style>
+    .footer__copyright {
+      color: #545454;
+    }
+  </style>
+  <footer class="footer root__container">
+    <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
 </body>
 
