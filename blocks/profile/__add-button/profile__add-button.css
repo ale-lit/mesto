@@ -6,6 +6,7 @@
   cursor: pointer;
   display: flex;
   transition: all .3s ease-in-out;
+  background: #000;
 }
 .profile__add-button:hover {
   opacity: .6;

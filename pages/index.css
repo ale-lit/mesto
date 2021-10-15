@@ -1,6 +1,7 @@
 @import url('../vendor/fonts.css');
 
 @import url('../blocks/root/root.css');
+@import url('../blocks/root/_light/root_light.css');
 @import url('../blocks/root/__container/root__container.css');
 
 @import url('../blocks/header/header.css');
@@ -19,13 +20,13 @@
 @import url('../blocks/places/places.css');
 
 @import url('../blocks/place/place.css');
+@import url('../blocks/place/_light/place_light.css');
 @import url('../blocks/place/__photo/place__photo.css');
 @import url('../blocks/place/__info/place__info.css');
 @import url('../blocks/place/__like/place__like.css');
 @import url('../blocks/place/__name/place__name.css');
 
 @import url('../blocks/footer/__copyright/footer__copyright.css');
-
 
 @import url('../blocks/popup/popup.css');
 @import url('../blocks/popup/_opened/popup_opened.css');

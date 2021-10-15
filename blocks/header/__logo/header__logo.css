@@ -1,3 +1,10 @@
+.header__logo {
+  width: 142px;
+  height: 33px;
+  background: url('../../../images/svg/logo.svg') no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
 @media screen and (max-width: 939px) {
   .header__logo {
     width: calc(100vw / 3);

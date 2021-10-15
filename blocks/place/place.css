@@ -4,4 +4,5 @@
   background: linear-gradient(black 282px, white 282px);
   border-radius: 10px;
   color: #000;
+  box-sizing: border-box;
 }
