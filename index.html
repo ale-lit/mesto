@@ -53,14 +53,17 @@
     margin: 0 0 8px;
     line-height: 48px;
   }
-  .profile__name::after {
-    content: '';
+  .profile__edit-button {
     width: 24px;
     height: 24px;
     background: url('./images/svg/edit.svg');
     cursor: pointer;
     display: inline-block;
     margin-left: 18px;
+    transition: all .3s ease-in-out;
+  }
+  .profile__edit-button:hover {
+    opacity: .6;
   }
   .profile__speciality {
     margin: 0;
@@ -88,7 +91,6 @@
     transition: all .3s ease-in-out;
   }
   .profile__add-button:hover::before {
-    1transform: scale(1.5);
     transform: rotate(.75turn);
   }
 </style>
@@ -102,7 +104,7 @@
     <section class="profile root__container">
       <img src="./images/kusto.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
       <div class="profile__info">
-        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <h1 class="profile__name">Жак-Ив Кусто<span class="profile__edit-button"></span></h1>
         <p class="profile__speciality">Исследователь океана</p>
       </div>
       <div class="profile__add-button" title="Добавить новое место"></div>
