@@ -1,8 +1,14 @@
 // Change theme
-const headLogo = document.querySelector('.header__logo');
 const root = document.querySelector('.root');
-const editButton = document.querySelector('.profile__edit-button');
+const headLogo = document.querySelector('.header__logo');
 const place = document.querySelectorAll('.place');
+const editButton = document.querySelector('.profile__edit-button');
+const currName = document.querySelector('.profile__name');
+const currSpeciality = document.querySelector('.profile__speciality');
+const inputName = document.querySelector('#input-name');
+const inputSpeciality = document.querySelector('#input-speciality');
+const popup = document.querySelector('.popup');
+const closeButton = document.querySelector('.popup__close-button');
 
 function changeTheme() {
   root.classList.toggle('root_light');
@@ -16,34 +22,35 @@ function changeTheme() {
 headLogo.addEventListener('click', changeTheme);
 
 
-// Popup
-const popup = document.querySelector('.popup');
-const closeButton = document.querySelector('.popup__close-button');
-
-editButton.addEventListener('click', function(){
+// Open Popup
+function openPopup() {
+  inputName.setAttribute('value', currName.textContent);
+  inputSpeciality.setAttribute('value', currSpeciality.textContent);
   popup.classList.add('popup_opened');
-});
+}
+editButton.addEventListener('click', openPopup);
 
-closeButton.addEventListener('click', function(){
+// Close Popup
+function closePopup() {
   popup.classList.remove('popup_opened');
-});
+}
+closeButton.addEventListener('click', closePopup);
 
 
 // Add button
 const addButton = document.querySelector('.profile__add-button');
 function noFunctionalAlert() {
-  alert('Данный функционал ещё не реализован..');
+  alert('Данный функционал пока не реализован :(');
 }
 addButton.addEventListener('click', noFunctionalAlert);
 
 
-// Change name
-const currName = document.querySelector('.profile__name');
-const currSpeciality = document.querySelector('.profile__speciality');
-const inputName = document.querySelector('#input-name');
-const inputSpeciality = document.querySelector('#input-speciality');
+// ch2
+const form = document.querySelector('.popup__form');
 
-//currName.textContent = '123';
-
-inputName.setAttribute('value', currName.textContent);
-inputSpeciality.setAttribute('value', currSpeciality.textContent);
+form.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  currName.textContent = inputName.value;
+  currSpeciality.textContent = inputSpeciality.value;
+  closePopup();
+});
