@@ -104,7 +104,7 @@
 
     <style>
       .photo-grid {
-        padding: 46px 0 66px;
+        padding: 50px 0 66px;
       }
       .places {
         list-style: none;
@@ -118,7 +118,7 @@
       .place {
         width: 282px;
         height: 361px;
-        background: #fff;
+        background: linear-gradient(black 282px, white 282px);
         border-radius: 10px;
         color: #000;
       }
@@ -127,23 +127,57 @@
         height: 282px;
         border-radius: 10px 10px 0 0;
       }
+      .place__info {
+        display: flex;
+        justify-content: space-between;
+        width: 240px;
+        margin: 20px auto 0;
+        align-items: center;
+      }
+      .place__info::after {
+        content: '';
+        display: block;
+        min-width: 22px;
+        height: 19px;
+        background: url(./images/svg/like-inactive.svg);
+        cursor: pointer;
+      }
       .place__name {
         margin: 0;
-        font-weight: 900;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 24px;
         line-height: 29px;
+        font-weight: 900;
       }
     </style>
     <section class="photo-grid root__container">
       <ul class="places">
         <li class="place">
-          <img src="./images/places/karachaevsk.jpg" alt="" class="place__photo">
-          <p class="place__name">Карачаевск</p>
+          <img src="./images/places/kamchatka.jpg" alt="Камчатка" class="place__photo">
+          <div class="place__info"><p class="place__name">Камчатка</p></div>
         </li>
-        <li class="place"></li>
-        <li class="place"></li>
-        <li class="place"></li>
-        <li class="place"></li>
-        <li class="place"></li>
+        <li class="place">
+          <img src="./images/places/sochi.jpg" alt="Сочи" class="place__photo">
+          <div class="place__info"><p class="place__name">Сочи</p></div>
+        </li>
+        <li class="place">
+          <img src="./images/places/gelendjick.jpg" alt="Геленджик" class="place__photo">
+          <div class="place__info"><p class="place__name">Геленджик</p></div>
+        </li>
+        <li class="place">
+          <img src="./images/places/sudak.jpg" alt="Судак" class="place__photo">
+          <div class="place__info"><p class="place__name">Судак</p></div>
+        </li>
+        <li class="place">
+          <img src="./images/places/karelia.jpg" alt="Карелия" class="place__photo">
+          <div class="place__info"><p class="place__name">Карелия</p></div>
+        </li>
+        <li class="place">
+          <img src="./images/places/pushkin.jpg" alt="Пушкин" class="place__photo">
+          <div class="place__info"><p class="place__name">Пушкин</p></div>
+        </li>
       </ul>
     </section>
   </main>
