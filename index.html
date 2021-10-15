@@ -291,15 +291,18 @@
     .popup {
       width: 100%;
       height: 100%;
-      display: flex;
+      display: none;
       position: absolute;
       z-index: 1;
       top: 0;
       background: rgba(0, 0, 0, 0.5);
     }
+    .popup_opened {
+      display: block;
+    }
     .popup__container {
-      width: 430px;
-      height: 330px;
+      width: calc(100vw - 38px);
+      max-width: 430px;
       background: #fff;
       border-radius: 10px;
       box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
@@ -310,12 +313,24 @@
       left: 50%;
       transform: translate(-50%, -50%);
     }
+    @media screen and (max-width: 599px) {
+      .popup__container {
+        padding: 26px 22px;
+      }
+    }
     .popup__title {
       color: #000;
       font-weight: 900;
       margin: 0 0 47px;
       font-size: 24px;
       line-height: 29px;
+    }
+    @media screen and (max-width: 599px) {
+      .popup__title {
+        font-size: 18px;
+        line-height: 22px;
+        margin: 0 0 74px;
+      }
     }
     .popup__input {
       border: none;
@@ -335,7 +350,7 @@
       background: #000;
       color: #fff;
       border-radius: 2px;
-      width: 358px;
+      width: 100%;
       height: 50px;
       font-size: 18px;
       line-height: 22px;
@@ -345,6 +360,15 @@
       transition: all .3s ease-in-out;
       cursor: pointer;
     }
+    @media screen and (max-width: 599px) {
+      .popup__save-button {
+        font-size: 14px;
+        line-height: 17px;
+        height: 46px;
+        margin-top: 15px;
+      }
+    }
+
     .popup__save-button:hover {
       opacity: .8;
     }
@@ -352,11 +376,20 @@
       width: 32px;
       height: 32px;
       background: url('./images/svg/close-popup-icon.svg');
+      background-size: cover;
       position: absolute;
       top: -40px;
       right: -40px;
       transition: all .3s ease-in-out;
       cursor: pointer;
+    }
+    @media screen and (max-width: 599px) {
+      .popup__close-button {
+        width: 20px;
+        height: 20px;
+        top: -36px;
+        right: 0;
+      }
     }
     .popup__close-button:hover {
       opacity: .6;
