@@ -19,22 +19,53 @@
     font-size: 18px;
     line-height: 22px;
   }
+  @media screen and (max-width: 939px) {
+    .root {
+      padding: 28px 0 45px;
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
 
   .root__container {
     margin: 0 auto;
     max-width: 880px;
+  }
+  @media screen and (max-width: 939px) {
+    .root__container {
+      padding: 0 19px;
+    }
   }
 
   .header {
     min-height: 74px;
     border-bottom: 1px solid #545454;
   }
+  @media screen and (max-width: 689px) {
+    .header {
+      min-height: 56px;
+    }
+  }
+
+  @media screen and (max-width: 939px) {
+    .header__logo {
+      width: calc(100vw / 3);
+      max-width: 142px;
+      margin-left: 6px;
+    }
+  }
 
   .profile {
     display: flex;
     align-items: center;
     gap: 30px;
-    padding-top: 40px;
+    padding-top: 41px;
+  }
+  @media screen and (max-width: 689px) {
+    .profile {
+      gap: 25px;
+      flex-direction: column;
+    }
   }
 
   .profile__avatar {
@@ -46,27 +77,55 @@
   .profile__info {
     flex-basis: 550px;
   }
+  @media screen and (max-width: 689px) {
+    .profile__info {
+      flex-basis: auto;
+    }
+  }
 
   .profile__name {
     font-size: 42px;
     font-weight: 500;
     margin: 0 0 8px;
     line-height: 48px;
+    position: relative;
+  }
+  @media screen and (max-width: 689px) {
+    .profile__name {
+      font-size: 27px;
+      line-height: 33px;
+    }
   }
   .profile__edit-button {
     width: 24px;
     height: 24px;
     background: url('./images/svg/edit.svg');
+    background-size: cover;
     cursor: pointer;
     display: inline-block;
     margin-left: 18px;
     transition: all .3s ease-in-out;
+    position: absolute;
+    top: 14px;
+  }
+  @media screen and (max-width: 689px) {
+    .profile__edit-button {
+      margin-left: 10px;
+      width: 18px;
+      height: 18px;
+      top: 9px;
+    }
   }
   .profile__edit-button:hover {
     opacity: .6;
   }
   .profile__speciality {
     margin: 0;
+  }
+  @media screen and (max-width: 689px) {
+    .profile__speciality {
+      text-align: center;
+    }
   }
 
   .profile__add-button {
@@ -78,17 +137,30 @@
     display: flex;
     transition: all .3s ease-in-out;
   }
+  @media screen and (max-width: 689px) {
+    .profile__add-button {
+      margin-top: 8px;
+      width: 100%;
+    }
+  }
   .profile__add-button:hover {
     opacity: .6;
   }
   .profile__add-button::before {
     content: '';
     background: url('./images/svg/cross.svg');
+    background-size: cover;
     width: 22px;
     height: 22px;
     display: block;
     margin: auto;
     transition: all .3s ease-in-out;
+  }
+  @media screen and (max-width: 689px) {
+    .profile__add-button::before {
+      width: 16px;
+      height: 16px;
+    }
   }
   .profile__add-button:hover::before {
     transform: rotate(.75turn);
@@ -97,7 +169,7 @@
 <body class="root">
 
   <header class="header root__container">
-    <img src="./images/svg/logo.svg" alt="Проект &laquo;Место&raquo;">
+    <img src="./images/svg/logo.svg" alt="Проект &laquo;Место&raquo;" class="header__logo">
   </header>
 
   <main>
@@ -113,6 +185,12 @@
     <style>
       .photo-grid {
         padding: 50px 0 68px;
+      }
+      @media screen and (max-width: 939px) {
+        .photo-grid {
+          padding: 36px 20px 50
+          px;
+        }
       }
       .places {
         list-style: none;
