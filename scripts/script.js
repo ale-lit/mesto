@@ -35,3 +35,13 @@ function noFunctionalAlert() {
   alert('Данный функционал пока не реализован..');
 }
 addButton.addEventListener('click', noFunctionalAlert);
+
+
+// Change name
+const currName = document.querySelector('.profile__name');
+const currSpeciality = document.querySelector('.profile__speciality');
+const inputName = document.querySelector('#input-name');
+const inputSpeciality = document.querySelector('#input-speciality');
+
+
+
