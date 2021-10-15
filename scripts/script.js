@@ -43,5 +43,7 @@ const currSpeciality = document.querySelector('.profile__speciality');
 const inputName = document.querySelector('#input-name');
 const inputSpeciality = document.querySelector('#input-speciality');
 
+//currName.textContent = '123';
 
-
+inputName.setAttribute('value', currName.textContent);
+inputSpeciality.setAttribute('value', currSpeciality.textContent);

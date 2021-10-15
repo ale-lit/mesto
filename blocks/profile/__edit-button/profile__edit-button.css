@@ -5,19 +5,16 @@
   background-size: cover;
   cursor: pointer;
   display: inline-block;
-  margin-left: 18px;
+  margin-left: 14px;
   transition: all .3s ease-in-out;
-  position: absolute;
-  top: 14px;
 }
 .profile__edit-button:hover {
   opacity: .6;
 }
 @media screen and (max-width: 689px) {
   .profile__edit-button {
-    margin-left: 10px;
+    margin-left: 5px;
     width: 18px;
     height: 18px;
-    top: 9px;
   }
 }
