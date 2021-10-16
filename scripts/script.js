@@ -1,14 +1,16 @@
 // Change theme
 const root = document.querySelector('.root');
-const headLogo = document.querySelector('.header__logo');
-const place = document.querySelectorAll('.place');
-const editButton = document.querySelector('.profile__edit-button');
-const currName = document.querySelector('.profile__name');
-const currSpeciality = document.querySelector('.profile__speciality');
-const inputName = document.querySelector('#input-name');
-const inputSpeciality = document.querySelector('#input-speciality');
+const headLogo = root.querySelector('.header__logo');
+const place = root.querySelectorAll('.place');
+const editButton = root.querySelector('.profile__edit-button');
+const currName = root.querySelector('.profile__name');
+const currSpeciality = root.querySelector('.profile__speciality');
+
 const popup = document.querySelector('.popup');
-const closeButton = document.querySelector('.popup__close-button');
+const closeButton = popup.querySelector('.popup__close-button');
+const form = popup.querySelector('.popup__form');
+const inputName = popup.querySelector('#input-name');
+const inputSpeciality = popup.querySelector('#input-speciality');
 
 function changeTheme() {
   root.classList.toggle('root_light');
@@ -37,20 +39,17 @@ function closePopup() {
 closeButton.addEventListener('click', closePopup);
 
 
-// Add button
-const addButton = document.querySelector('.profile__add-button');
-function noFunctionalAlert() {
-  alert('Данный функционал пока не реализован :(');
-}
-addButton.addEventListener('click', noFunctionalAlert);
-
-
 // ch2
-const form = document.querySelector('.popup__form');
-
 form.addEventListener('submit', function (evt) {
   evt.preventDefault();
   currName.textContent = inputName.value;
   currSpeciality.textContent = inputSpeciality.value;
   closePopup();
 });
+
+// Add button
+const addButton = document.querySelector('.profile__add-button');
+function noFunctionalAlert() {
+  alert('Данный функционал пока не реализован :(');
+}
+addButton.addEventListener('click', noFunctionalAlert);
