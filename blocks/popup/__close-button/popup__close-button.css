@@ -8,6 +8,7 @@
   right: -40px;
   transition: all .3s ease-in-out;
   cursor: pointer;
+  border: 0;
 }
 @media screen and (max-width: 599px) {
   .popup__close-button {

@@ -28,28 +28,23 @@ function changeTheme() {
     element.classList.toggle('place_light');
   });
 }
-headLogoElement.addEventListener('click', changeTheme);
-
 // Add Place (in progress)
 function noFunctionalAlert() {
   alert('Данный функционал ещё не реализован :(');
 }
-addButtonElement.addEventListener('click', noFunctionalAlert);
-
 // Open Popup
 function openPopup() {
   inputNameElement.value = currentNameElement.textContent;
   inputSpecialityElement.value = currentSpecialityElement.textContent;
   popupElement.classList.add('popup_opened');
 }
-editButtonElement.addEventListener('click', openPopup);
-
 // Close Popup
 function closePopup() {
   popupElement.classList.remove('popup_opened');
 }
-closeButtonElement.addEventListener('click', closePopup);
-
+function closePopupByClickOverlay(event) {
+  if (event.target === event.currentTarget) closePopup();
+}
 // Change Profile Info
 function changeProfile(evt) {
   evt.preventDefault();
@@ -57,4 +52,13 @@ function changeProfile(evt) {
   currentSpecialityElement.textContent = inputSpecialityElement.value;
   closePopup();
 }
+
+// ************************************************************
+// *** EVENTS ***
+// ************************************************************
+headLogoElement.addEventListener('click', changeTheme);
+addButtonElement.addEventListener('click', noFunctionalAlert);
+editButtonElement.addEventListener('click', openPopup);
+closeButtonElement.addEventListener('click', closePopup);
 formElement.addEventListener('submit', changeProfile);
+popupElement.addEventListener('click', closePopupByClickOverlay);
