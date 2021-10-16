@@ -5,7 +5,7 @@
 👁‍🗨🔻〰🔽🔗🖥💻🔎🔍 https://ale-lit.github.io/mesto/
   ------------- |
 <a href="https://ale-lit.github.io/how-to-learn/"><img src="https://github.com/ale-lit/ale-lit/blob/main/screens/mesto.jpg" alt="Место"></a>
-https://ale-lit.github.io/mesto/ |
+https://ale-lit.github.io/mesto/
   
 </div>
 
@@ -24,9 +24,6 @@ https://ale-lit.github.io/mesto/
 * CSS 3
 * Flex
 * верстка по методологии "БЭМ"
-
-## Планы по доработке проекта
-* "доработать" README.md
 
 ## Чеклист по работе
 https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-4/index.html
