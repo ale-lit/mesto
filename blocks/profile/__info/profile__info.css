@@ -1,8 +1,13 @@
 .profile__info {
   flex-basis: 550px;
+  position: relative;
+  max-width: 550px;
+  width: calc(100vw - 355px);
 }
 @media screen and (max-width: 689px) {
   .profile__info {
+    width: calc(100vw - 66px);
     flex-basis: auto;
+    text-align: center;
   }
 }
