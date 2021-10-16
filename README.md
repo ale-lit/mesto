@@ -20,7 +20,7 @@ https://ale-lit.github.io/mesto/
 * CSS 3
 * FlexBox
 * JavaScript
-* верстка и файловая структура по методологии "БЭМ"
+* адаптивная, кроссбраузерная верстка и файловая структура по методологии "БЭМ"
 
 ## Чеклист по работе
 https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-4/index.html
