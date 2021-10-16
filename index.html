@@ -19,37 +19,37 @@
       <img src="./images/kusto.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто <span>23</span></h1>
-        <span class="profile__edit-button"></span>
+        <button aria-label="Редактировать профиль" class="profile__edit-button"></button>
         <p class="profile__speciality">Исследователь океана</p>
       </div>
-      <div class="profile__add-button" title="Добавить новое место"></div>
+      <button aria-label="Добавить новое место" class="profile__add-button" title="Добавить новое место"></button>
     </section>
 
     <section class="photo-grid root__container">
       <ul class="places">
         <li class="place">
           <img src="./images/places/kamchatka.jpg" alt="Камчатка" class="place__photo">
-          <div class="place__info"><p class="place__name">Камчатка</p><span class="place__like"></span></div>
+          <div class="place__info"><p class="place__name">Камчатка</p><button aria-label="Нравится" class="place__like"></button></div>
         </li>
         <li class="place">
           <img src="./images/places/sochi.jpg" alt="Сочи" class="place__photo">
-          <div class="place__info"><p class="place__name">Сочи</p><span class="place__like"></span></div>
+          <div class="place__info"><p class="place__name">Сочи</p><button aria-label="Нравится" class="place__like"></button></div>
         </li>
         <li class="place">
           <img src="./images/places/gelendjick.jpg" alt="Геленджик" class="place__photo">
-          <div class="place__info"><p class="place__name">Геленджик</p><span class="place__like"></span></div>
+          <div class="place__info"><p class="place__name">Геленджик</p><button aria-label="Нравится" class="place__like"></button></div>
         </li>
         <li class="place">
           <img src="./images/places/sudak.jpg" alt="Судак" class="place__photo">
-          <div class="place__info"><p class="place__name">Судак</p><span class="place__like"></span></div>
+          <div class="place__info"><p class="place__name">Судак</p><button aria-label="Нравится" class="place__like"></button></div>
         </li>
         <li class="place">
           <img src="./images/places/karelia.jpg" alt="Карелия" class="place__photo">
-          <div class="place__info"><p class="place__name">Карелия</p><span class="place__like"></span></div>
+          <div class="place__info"><p class="place__name">Карелия</p><button aria-label="Нравится" class="place__like"></button></div>
         </li>
         <li class="place">
           <img src="./images/places/pushkin.jpg" alt="Пушкин" class="place__photo">
-          <div class="place__info"><p class="place__name">Пушкин</p><span class="place__like"></span></div>
+          <div class="place__info"><p class="place__name">Пушкин</p><button aria-label="Нравится" class="place__like"></button></div>
         </li>
       </ul>
     </section>
@@ -59,7 +59,7 @@
     <p class="footer__copyright">© 2021 Mesto Russia</p>
   </footer>
 
-  <div class="popup">
+  <section class="popup">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form action="/" method="post" class="popup__form">
@@ -69,7 +69,7 @@
       </form>
       <span class="popup__close-button" title="Закрыть"></span>
     </div>
-  </div>
+  </ы>
   <script src="./scripts/script.js"></script>
 </body>
 </html>

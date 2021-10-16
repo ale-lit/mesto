@@ -7,6 +7,7 @@
   display: inline-block;
   margin-left: 14px;
   transition: all .3s ease-in-out;
+  border: 0;
 }
 .profile__edit-button:hover {
   opacity: .6;
