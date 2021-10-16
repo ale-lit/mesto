@@ -22,5 +22,8 @@ https://ale-lit.github.io/mesto/
 * JavaScript
 * адаптивная, кроссбраузерная верстка и файловая структура по методологии "БЭМ"
 
+## Макет в Figma
+https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1
+
 ## Чеклист по работе
 https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-4/index.html
