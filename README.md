@@ -2,8 +2,10 @@
 
 <div align="center">
   
-👁‍🗨🔻〰🔽🔗🖥💻🔎🔍 https://ale-lit.github.io/mesto/
-  ------------- |
+
+
+▼ ▼ ▼
+------------- |
 <a href="https://ale-lit.github.io/how-to-learn/"><img src="https://github.com/ale-lit/ale-lit/blob/main/screens/mesto.jpg" alt="Место"></a>
 https://ale-lit.github.io/mesto/
   
@@ -27,3 +29,4 @@ https://ale-lit.github.io/mesto/
 
 ## Чеклист по работе
 https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-4/index.html
+👁‍🗨🔻〰🔽🔗🖥💻🔎🔍 https://ale-lit.github.io/mesto/
