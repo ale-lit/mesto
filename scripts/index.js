@@ -21,11 +21,11 @@ const inputSpecialityElement = popupElement.querySelector('#input-speciality');
 // ************************************************************
 // Change Theme
 function changeTheme() {
-  rootElement.classList.toggle('root_light');
-  headLogoElement.classList.toggle('header__logo_light');
-  editButtonElement.classList.toggle('profile__edit-button_light');
+  rootElement.classList.toggle('root_theme_light');
+  headLogoElement.classList.toggle('header__logo_theme_light');
+  editButtonElement.classList.toggle('profile__edit-button_theme_light');
   placeElement.forEach(element => {
-    element.classList.toggle('place_light');
+    element.classList.toggle('place_theme_light');
   });
 }
 // Add Place (in progress)
