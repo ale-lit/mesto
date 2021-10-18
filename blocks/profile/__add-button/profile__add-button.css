@@ -7,6 +7,7 @@
   display: flex;
   transition: all .3s ease-in-out;
   background: #000;
+  border-radius: 2px;
 }
 .profile__add-button:hover {
   opacity: .6;
