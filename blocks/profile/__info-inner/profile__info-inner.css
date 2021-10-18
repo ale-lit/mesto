@@ -1,0 +1,9 @@
+.profile__info-inner {
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 689px) {
+  .profile__info-inner {
+    justify-content: center;
+  }
+}

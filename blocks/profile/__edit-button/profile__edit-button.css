@@ -8,8 +8,6 @@
   margin-left: 19px;
   transition: all .3s ease-in-out;
   border: 0;
-  position: absolute;
-  top: 15px;
 }
 .profile__edit-button:hover {
   opacity: .6;
@@ -19,6 +17,5 @@
     margin-left: 10px;
     width: 18px;
     height: 18px;
-    top: 8px;
   }
 }
