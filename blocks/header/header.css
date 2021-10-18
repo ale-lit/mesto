@@ -1,6 +1,6 @@
 .header {
   min-height: 74px;
-  border-bottom: 1px solid #545454;
+  border-bottom: 1px solid rgb(84 84 84 / 70%);
 }
 @media screen and (max-width: 689px) {
   .header {
