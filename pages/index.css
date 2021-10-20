@@ -1,12 +1,12 @@
 @import url('../vendor/fonts.css');
 
 @import url('../blocks/root/root.css');
-@import url('../blocks/root/_theme_light/root_theme_light.css');
+@import url('../blocks/root/_theme/root_theme_light.css');
 @import url('../blocks/root/__container/root__container.css');
 
 @import url('../blocks/header/header.css');
 @import url('../blocks/header/__logo/header__logo.css');
-@import url('../blocks/header/__logo/_theme_light/header__logo_theme_light.css');
+@import url('../blocks/header/__logo/_theme/header__logo_theme_light.css');
 
 @import url('../blocks/profile/profile.css');
 @import url('../blocks/profile/__avatar/profile__avatar.css');
@@ -14,7 +14,7 @@
 @import url('../blocks/profile/__info-inner/profile__info-inner.css');
 @import url('../blocks/profile/__name/profile__name.css');
 @import url('../blocks/profile/__edit-button/profile__edit-button.css');
-@import url('../blocks/profile/__edit-button/_theme_light/profile__edit-button_theme_light.css');
+@import url('../blocks/profile/__edit-button/_theme/profile__edit-button_theme_light.css');
 @import url('../blocks/profile/__speciality/profile__speciality.css');
 @import url('../blocks/profile/__add-button/profile__add-button.css');
 
@@ -23,7 +23,7 @@
 @import url('../blocks/places/places.css');
 
 @import url('../blocks/place/place.css');
-@import url('../blocks/place/_theme_light/place_theme_light.css');
+@import url('../blocks/place/_theme/place_theme_light.css');
 @import url('../blocks/place/__photo/place__photo.css');
 @import url('../blocks/place/__info/place__info.css');
 @import url('../blocks/place/__like/place__like.css');
