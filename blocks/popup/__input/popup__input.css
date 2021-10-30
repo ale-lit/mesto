@@ -11,7 +11,7 @@
   padding: 0px 0px 8px 0px;
   font-family: 'Inter', Arial, sans-serif;
   outline: none;
-  transition: all .3s ease-in-out;
+  transition: border .3s ease-in-out;
 }
 .popup__input:focus {
   border-color: #000;

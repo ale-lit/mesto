@@ -9,7 +9,7 @@
   font-family: 'Inter', Arial, sans-serif;
   margin-top: 18px;
   border: none;
-  transition: all .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
   cursor: pointer;
 }
 .popup__save-button:hover {
