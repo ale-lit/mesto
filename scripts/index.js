@@ -1,6 +1,7 @@
 // ************************************************************
 // *** DOM DEFINITION ***
 // ************************************************************
+// DOM Elements
 const rootElement = document.querySelector('.root');
 const headLogoElement = rootElement.querySelector('.header__logo');
 const placesElement = document.querySelector('.places');
@@ -9,14 +10,13 @@ const editButtonElement = rootElement.querySelector('.profile__edit-button');
 const currentNameElement = rootElement.querySelector('.profile__name');
 const currentSpecialityElement = rootElement.querySelector('.profile__speciality');
 const addButtonElement = document.querySelector('.profile__add-button');
-// Popup
+// Popup Elements
 const popupElement = document.querySelector('.popup');
 const closeButtonElement = popupElement.querySelector('.popup__close-button');
 const formElement = popupElement.querySelector('.popup__form');
 const inputNameElement = popupElement.querySelector('#input-name');
 const inputSpecialityElement = popupElement.querySelector('#input-speciality');
-
-
+// Cards Array
 const initialCards = [
   {
     name: 'Пушкин',
@@ -44,6 +44,10 @@ const initialCards = [
   }
 ];
 
+// ************************************************************
+// *** FUNCTIONS ***
+// ************************************************************
+// Add Cards On Load Page
 function addCardsOnload() {
   initialCards.forEach((item) => {
     addCard(item.name, item.link);
@@ -51,24 +55,20 @@ function addCardsOnload() {
 }
 addCardsOnload();
 
-
+// Add One Card
 function addCard(name, image) {
   // Clone Element Template
   const cardElement = placeTemplate.querySelector('.place').cloneNode(true);
 
-  // Add Content
+  // Insert Content
   cardElement.querySelector('.place__photo').src = image;
   cardElement.querySelector('.place__photo').alt = name;
   cardElement.querySelector('.place__name').textContent = name;
 
-
+  // Add Ready Element
   placesElement.prepend(cardElement);
 }
 
-
-// ************************************************************
-// *** FUNCTIONS ***
-// ************************************************************
 // Change Theme
 function changeTheme() {
   const placeElement = rootElement.querySelectorAll('.place');
