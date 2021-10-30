@@ -80,9 +80,15 @@ function addCard(name, image) {
 
   // Add Events
   cardElement.querySelector('.place__like').addEventListener('click', addRemoveLike);
+  cardElement.querySelector('.place__delete').addEventListener('click', deletePlace);
 
   // Add Ready Element
   placesElement.prepend(cardElement);
+}
+
+// Delete Place
+function deletePlace(event) {
+  event.target.closest('.place').remove();
 }
 
 // Open Popup

@@ -1,0 +1,15 @@
+.place__delete {
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 18px;
+  height: 19px;
+  background: url('../../../images/svg/trash.svg');
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  border: 0;
+}
+.place__delete:hover {
+  opacity: .6;
+}
