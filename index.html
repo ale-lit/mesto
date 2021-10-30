@@ -29,7 +29,7 @@
 
     <section class="photo-grid root__container">
       <ul class="places">
-        <template class="place-template">
+        <template id="place">
           <li class="place">
             <img src="" alt="" class="place__photo">
             <div class="place__info">
@@ -46,17 +46,17 @@
     <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
   </footer>
 
-  <section class="popup">
+  <div class="popup">
     <div class="popup__container">
-      <h2 class="popup__title">Редактировать профиль</h2>
+      <h2 class="popup__title"></h2>
       <form name="profile-form" action="/" method="post" class="popup__form">
-        <input type="text" name="name" id="input-name" placeholder="Имя" class="popup__input">
-        <input type="text" name="speciality" id="input-speciality" placeholder="Специализация" class="popup__input">
-        <input type="submit" value="Сохранить" class="popup__save-button">
+        <input type="text" name="first" id="input-first" placeholder="" class="popup__input">
+        <input type="text" name="second" id="input-second" placeholder="" class="popup__input">
+        <input type="submit" value="" class="popup__save-button">
       </form>
       <button type="button" class="popup__close-button" aria-label="Закрыть" title="Закрыть"></button>
     </div>
-  </section>
+  </div>
 
   <script src="./scripts/index.js"></script>
 </body>
