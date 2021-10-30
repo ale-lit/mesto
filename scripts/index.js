@@ -16,6 +16,7 @@ const closeButtonElement = popupElement.querySelector('.popup__close-button');
 const popupTitle = popupElement.querySelector('.popup__title');
 const formElement = popupElement.querySelector('.popup__form');
 const inputFirstElement = popupElement.querySelector('#input-first');
+
 const inputSecondElement = popupElement.querySelector('#input-second');
 const popupSaveButton = popupElement.querySelector('.popup__save-button');
 // Cards Array
@@ -76,6 +77,9 @@ function addCard(name, image) {
   cardElement.querySelector('.place__photo').src = image;
   cardElement.querySelector('.place__photo').alt = name;
   cardElement.querySelector('.place__name').textContent = name;
+
+  // Add Events
+  cardElement.querySelector('.place__like').addEventListener('click', addRemoveLike);
 
   // Add Ready Element
   placesElement.prepend(cardElement);
@@ -141,6 +145,10 @@ function addNewCard(evt) {
 function clearListeners() {
   formElement.removeEventListener('submit', changeProfile);
   formElement.removeEventListener('submit', addNewCard);
+}
+// Likes
+function addRemoveLike(event) {
+  event.target.classList.toggle('place__like_active');
 }
 // Change Theme
 function changeTheme() {
