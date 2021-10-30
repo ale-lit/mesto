@@ -3,4 +3,9 @@
   object-fit: cover;
   height: 282px;
   border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+.place__photo:hover {
+  opacity: .6;
 }
