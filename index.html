@@ -28,8 +28,7 @@
     </section>
 
     <section class="photo-grid root__container">
-      <ul class="places">
-      </ul>
+      <ul class="places"></ul>
     </section>
   </main>
 
@@ -37,14 +36,36 @@
     <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
   </footer>
 
-  <div class="popup">
+  <div class="popup popup_type_edit-profile">
     <div class="popup__container">
-      <h2 class="popup__title"></h2>
+      <h2 class="popup__title">Редактировать профиль</h2>
       <form name="profile-form" action="/" method="post" class="popup__form">
-        <input type="text" name="first" id="input-first" class="popup__input" required>
-        <input type="text" name="second" id="input-second" class="popup__input" required>
-        <input type="submit" value="" class="popup__save-button">
+        <input type="text" placeholder="Имя" name="name" id="input-name" class="popup__input" required>
+        <input type="text" placeholder="Специализация" name="speciality" id="input-speciality" class="popup__input" required>
+        <input type="submit" value="Сохранить" class="popup__save-button">
       </form>
+      <button type="button" class="popup__close-button" aria-label="Закрыть" title="Закрыть"></button>
+    </div>
+  </div>
+
+  <div class="popup popup_type_add-place">
+    <div class="popup__container">
+      <h2 class="popup__title">Новое место</h2>
+      <form name="place-form" action="/" method="post" class="popup__form">
+        <input type="text" placeholder="Название" name="place-name" id="input-place-name" class="popup__input" required>
+        <input type="text" placeholder="Ссылка на картинку" name="image-source" id="input-image-source" class="popup__input" required>
+        <input type="submit" value="Создать" class="popup__save-button">
+      </form>
+      <button type="button" class="popup__close-button" aria-label="Закрыть" title="Закрыть"></button>
+    </div>
+  </div>
+
+  <div class="popup popup_type_image-preview">
+    <div class="popup__container">
+      <figure class="popup__figure">
+        <img src="#" alt="" class="popup__image">
+        <figcaption class="popup__figcaption"></figcaption>
+      </figure>
       <button type="button" class="popup__close-button" aria-label="Закрыть" title="Закрыть"></button>
     </div>
   </div>
