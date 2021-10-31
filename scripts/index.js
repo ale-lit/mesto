@@ -30,7 +30,6 @@ const popupImagePreviewFigCaption = popupImagePreviewFigure.querySelector('.popu
 const popupElements = document.querySelectorAll('.popup');
 const popupCloseButtons = document.querySelectorAll('.popup__close-button');
 
-// const popupSaveButton = popupElement.querySelector('.popup__save-button');
 // Initial Cards Array
 const initialCards = [
   {

@@ -1,8 +1,6 @@
-.popup__title_type_image {
+.popup__figcaption {
   color: #fff;
   font-size: 12px;
   line-height: 15px;
-  font-weight: normal;
   margin: 10px 0 0;
-  box-shadow: none;
 }
