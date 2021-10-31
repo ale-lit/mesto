@@ -6,6 +6,6 @@
   top: 0;
   background: rgba(0, 0, 0, 0.5);
   opacity: 0;
-  transition: opacity .3s linear;
+  transition: all .3s linear;
   visibility: hidden;
 }

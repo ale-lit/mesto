@@ -17,10 +17,9 @@ const closeButtonElement = popupElement.querySelector('.popup__close-button');
 const popupTitle = popupElement.querySelector('.popup__title');
 const formElement = popupElement.querySelector('.popup__form');
 const inputFirstElement = popupElement.querySelector('#input-first');
-
 const inputSecondElement = popupElement.querySelector('#input-second');
 const popupSaveButton = popupElement.querySelector('.popup__save-button');
-// Cards Array
+// Initial Cards Array
 const initialCards = [
   {
     name: 'Пушкин',
@@ -61,7 +60,7 @@ popupElement.addEventListener('click', closePopupByClickOverlay);
 // ************************************************************
 // *** FUNCTIONS ***
 // ************************************************************
-// Add Cards On Load Page
+// ADD SAVED CARDS ON LOAD PAGE
 function addCardsOnloadPage() {
   initialCards.forEach((item) => {
     addCard(item.name, item.link);
@@ -69,9 +68,9 @@ function addCardsOnloadPage() {
 }
 addCardsOnloadPage();
 
-// Add One Card
+// ADD ONE CARD FUNCTIONAL
 function addCard(name, image) {
-  // Clone Element Template
+  // Clone Element From Template
   const cardElement = placeTemplate.querySelector('.place').cloneNode(true);
 
   // Insert Content
@@ -88,19 +87,19 @@ function addCard(name, image) {
   placesElement.prepend(cardElement);
 }
 
-// Delete Place
+// DELETE PLACE FUNCTIONAL
 function deletePlace(event) {
   event.target.closest('.place').remove();
 }
 
-// Preview Image
+// PREVIEW IMAGE
 function previewImage(event) {
   const currImage = event.target.src;
   const currName = event.target.closest('.place').querySelector('.place__name').textContent;
   openPopup('previewImage', currImage, currName);
 }
 
-// Open Popup
+// OPEN POPUP
 function openPopup(action, ...data) {
   if (action === 'editProfile') {
     // Popup Title
@@ -116,81 +115,101 @@ function openPopup(action, ...data) {
     // Event
     formElement.addEventListener('submit', changeProfile);
   } else if (action === 'addNewPlace') {
+    // Popup Title
     popupTitle.textContent = 'Новое место';
-
+    // Popup First Input
     inputFirstElement.value = '';
     inputFirstElement.placeholder = 'Название';
-
+    // Popup Second Input
     inputSecondElement.value = '';
     inputSecondElement.placeholder = 'Ссылка на картинку';
-
+    // Save Button
     popupSaveButton.value = 'Создать';
-
+    // Event
     formElement.addEventListener('submit', addNewCard);
   } else if (action === 'previewImage') {
+    // Popup Title
+    popupTitle.textContent = data[1];
+    // Add Styles For Image Preview
     popupElement.classList.add('popup_type_image');
     popupContainerElement.classList.add('popup__container_type_image');
     popupTitle.classList.add('popup__title_type_image');
     formElement.classList.add('hide');
-
+    // Generate Image Element
     const image = document.createElement('img');
     image.src = data[0];
     image.alt = data[1];
     image.classList.add('popup__image');
-
-    popupTitle.textContent = data[1];
-
+    // Add Image Element
     popupContainerElement.prepend(image);
   }
-
+  // Add Open Class
   popupElement.classList.add('popup_opened');
 }
-// Close Popup
+
+// CLOSE POPUP
 function closePopup() {
+  // Delete Open Class
   popupElement.classList.remove('popup_opened');
-
-  popupElement.classList.remove('popup_type_image');
-  popupContainerElement.classList.remove('popup__container_type_image');
-  formElement.classList.remove('hide');
-  popupTitle.classList.remove('popup__title_type_image');
-  popupElement.querySelector('.popup__image').remove();
-
+  // Delete Styles For Image Preview (with pause)
+  setTimeout(() => {
+    popupElement.classList.remove('popup_type_image');
+    popupContainerElement.classList.remove('popup__container_type_image');
+    formElement.classList.remove('hide');
+    popupTitle.classList.remove('popup__title_type_image');
+    popupElement.querySelector('.popup__image').remove();
+  }, 300);
+  // Delete All Events
   clearListeners();
 }
+// Close Popup From Click Overlay
 function closePopupByClickOverlay(event) {
   if (event.target === event.currentTarget) closePopup();
 }
 
-// Change Profile
+// CHANGE PROFILE
 function changeProfile(evt) {
+  // Reset Default Hadler For Submit
   evt.preventDefault();
+  // Change Content From User Choice
   currentNameElement.textContent = inputFirstElement.value;
   currentSpecialityElement.textContent = inputSecondElement.value;
+
   clearListeners();
+
   closePopup();
 }
-// Add New Place
+
+// ADD NEW PLACE
 function addNewCard(evt) {
   evt.preventDefault();
+
   addCard(inputFirstElement.value, inputSecondElement.value);
+
   clearListeners();
   closePopup();
 }
-// Clear All Listeners
+
+// DELETE ALL LISTENERS
 function clearListeners() {
   formElement.removeEventListener('submit', changeProfile);
   formElement.removeEventListener('submit', addNewCard);
 }
-// Likes
+
+// ADD / REMOVE LIKES
 function addRemoveLike(event) {
   event.target.classList.toggle('place__like_active');
 }
-// Change Theme
+
+// CHANGE THEME
 function changeTheme() {
-  const placeElement = rootElement.querySelectorAll('.place');
+  // Add / Remove Mod Classes
   rootElement.classList.toggle('root_theme_light');
   headLogoElement.classList.toggle('header__logo_theme_light');
   editButtonElement.classList.toggle('profile__edit-button_theme_light');
+
+  // Select All Actual Place Blocks
+  const placeElement = rootElement.querySelectorAll('.place');
   placeElement.forEach(element => {
     element.classList.toggle('place_theme_light');
   });
