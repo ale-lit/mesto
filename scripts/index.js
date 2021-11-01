@@ -65,11 +65,6 @@ const initialCards = [
 
 headLogoElement.addEventListener('click', changeTheme);
 
-addButtonElement.addEventListener('click', () => {
-  popupAddNewPlaceForm.addEventListener('submit', addNewCard);
-  openPopup(popupAddNewPlace)
-});
-
 editButtonElement.addEventListener('click', () => {
   // Update Actual Data In Inputs
   inputName.value = currentNameElement.textContent;
@@ -77,6 +72,14 @@ editButtonElement.addEventListener('click', () => {
 
   popupEditProfileForm.addEventListener('submit', changeProfile);
   openPopup(popupEditProfile)
+});
+
+addButtonElement.addEventListener('click', () => {
+  inputPlaceName.value = '';
+  inputImageSource.value = '';
+
+  popupAddNewPlaceForm.addEventListener('submit', addNewCard);
+  openPopup(popupAddNewPlace)
 });
 
 popupCloseButtons.forEach((element) => {
