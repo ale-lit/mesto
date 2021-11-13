@@ -36,12 +36,53 @@
     <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
   </footer>
 
+
+  <style>
+    .popup__field {
+      position: relative;
+    }
+
+    .popup__input_type_error {
+      border-bottom-color: #ff0000;
+    }
+    .popup__input_type_error:focus {
+      border-color: #ff0000;
+    }
+
+    .popup__input-error {
+      color: #ff0000;
+      font-size: 12px;
+      line-height: 15px;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      z-index: 1;
+    }
+
+    .popup__button_invalid {
+      background: #fff;
+    }
+    .popup__save-button:disabled {
+      background: #fff;
+      color: #000;
+      opacity: 0.2;
+      border: 1px solid #000;
+      cursor: default;
+    }
+  </style>
+
   <div class="popup popup_type_edit-profile">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form name="profile-form" action="/" method="post" class="popup__form">
-        <input type="text" placeholder="Имя" name="name" id="input-name" class="popup__input" required>
-        <input type="text" placeholder="Специализация" name="speciality" id="input-speciality" class="popup__input" required>
+      <form name="profile-form" action="/" method="post" class="popup__form" novalidate>
+        <div class="popup__field">
+          <input type="text" placeholder="Имя" name="name" id="input-name" class="popup__input" minlength="2" maxlength="40" required>
+          <span id="input-name-error" class="popup__input-error"></span>
+        </div>
+        <div class="popup__field">
+          <input type="text" placeholder="Специализация" name="speciality" id="input-speciality" class="popup__input" minlength="2" maxlength="200" required>
+          <span id="input-speciality-error" class="popup__input-error"></span>
+        </div>
         <input type="submit" value="Сохранить" class="popup__save-button">
       </form>
       <button type="button" class="popup__close-button" aria-label="Закрыть" title="Закрыть"></button>
@@ -51,9 +92,16 @@
   <div class="popup popup_type_add-place">
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
-      <form name="place-form" action="/" method="post" class="popup__form">
-        <input type="text" placeholder="Название" name="place-name" id="input-place-name" class="popup__input" required>
-        <input type="text" placeholder="Ссылка на картинку" name="image-source" id="input-image-source" class="popup__input" required>
+      <form name="place-form" action="/" method="post" class="popup__form" novalidate>
+        <div class="popup__field">
+          <input type="text" placeholder="Название" name="place-name" id="input-place-name" class="popup__input" minlength="2" maxlength="30" required>
+          <span id="input-place-name-error" class="popup__input-error"></span>
+        </div>
+
+        <div class="popup__field">
+          <input type="url" placeholder="Ссылка на картинку" name="image-source" id="input-image-source" class="popup__input" required>
+          <span id="input-image-source-error" class="popup__input-error"></span>
+        </div>
         <input type="submit" value="Создать" class="popup__save-button">
       </form>
       <button type="button" class="popup__close-button" aria-label="Закрыть" title="Закрыть"></button>
@@ -82,5 +130,6 @@
   </template>
 
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 </html>

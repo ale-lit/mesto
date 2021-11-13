@@ -71,7 +71,7 @@ editButtonElement.addEventListener('click', () => {
   inputSpeciality.value = currentSpecialityElement.textContent;
 
   popupEditProfileForm.addEventListener('submit', changeProfile);
-  openPopup(popupEditProfile)
+  openPopup(popupEditProfile);
 });
 
 addButtonElement.addEventListener('click', () => {
@@ -79,7 +79,7 @@ addButtonElement.addEventListener('click', () => {
   inputImageSource.value = '';
 
   popupAddNewPlaceForm.addEventListener('submit', addNewCard);
-  openPopup(popupAddNewPlace)
+  openPopup(popupAddNewPlace);
 });
 
 popupCloseButtons.forEach((element) => {
