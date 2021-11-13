@@ -13,7 +13,6 @@ enableValidation();
 
 function addListenersToForm(form) {
   form.addEventListener('input', handleFormInput);
-  toggleButton(form);
 }
 
 function handleFormInput(evt) {
