@@ -70,6 +70,11 @@ editButtonElement.addEventListener('click', () => {
   inputName.value = currentNameElement.textContent;
   inputSpeciality.value = currentSpecialityElement.textContent;
 
+  // Validate Form On Every Open
+  handleFieldValidation(inputName);
+  handleFieldValidation(inputSpeciality);
+  toggleButton(popupEditProfileForm);
+
   popupEditProfileForm.addEventListener('submit', changeProfile);
   openPopup(popupEditProfile);
 });
@@ -77,6 +82,9 @@ editButtonElement.addEventListener('click', () => {
 addButtonElement.addEventListener('click', () => {
   inputPlaceName.value = '';
   inputImageSource.value = '';
+
+  // Validate Form On Every Open
+  toggleButton(popupAddNewPlaceForm);
 
   popupAddNewPlaceForm.addEventListener('submit', addNewCard);
   openPopup(popupAddNewPlace);
@@ -93,19 +101,6 @@ popupElements.forEach((element) => {
     closePopupByClickOverlay(event);
   });
 });
-
-document.addEventListener('keydown', closePopupByPressEscape);
-
-// const inputs = [...document.querySelectorAll('.popup__input')];
-
-// inputs.forEach((input));
-// input.addEventListener('keydown', function (evt) {
-//   // Проверяем, была ли введена цифра
-//     if (Number.isNaN(Number(evt.key))) {
-//     // Если пользователь ввёл не цифру, показываем блок с ошибкой
-//     error.style.display = 'block';
-//     };
-// });
 
 // ********************************************
 // *** FUNCTIONS ***
@@ -159,20 +154,31 @@ function deletePlace(event) {
 function openPopup(popup) {
   // Add Open Class
   popup.classList.add('popup_opened');
+  addEventForCloseFromEscape();
 }
 
 // CLOSE POPUP
 function closePopup(popup) {
   // Delete Open Class
   popup.classList.remove('popup_opened');
+  removeEventForCloseFromEscape();
 }
 // Close Popup From Click Overlay
 function closePopupByClickOverlay(event) {
   if (event.target === event.currentTarget) {
     closePopup(event.target.closest('.popup'));
+    removeEventForCloseFromEscape();
+
   };
 }
-// Close Popup From Press Escape
+// Add & Remove Event For Close Popup On 'Escape'
+function addEventForCloseFromEscape() {
+  document.addEventListener('keydown', closePopupByPressEscape);
+}
+function removeEventForCloseFromEscape() {
+  document.removeEventListener('keydown', closePopupByPressEscape);
+}
+// Close Popup From Press 'Escape'
 function closePopupByPressEscape(event) {
   if(event.key === 'Escape') {
     const currPopup = document.querySelector('.popup_opened');
