@@ -15,13 +15,6 @@
 .popup__save-button:hover {
   opacity: .8;
 }
-.popup__save-button:disabled {
-  background: #fff;
-  color: #000;
-  opacity: 0.2;
-  border: 1px solid #000;
-  cursor: default;
-}
 @media screen and (max-width: 599px) {
   .popup__save-button {
     font-size: 14px;

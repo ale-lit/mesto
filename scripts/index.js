@@ -45,7 +45,6 @@ const initialCards = [
     link: './images/places/sudak.jpg'
   },
   {
-
     name: 'Геленджик',
     link: './images/places/gelendjick.jpg'
   },
@@ -168,7 +167,6 @@ function closePopupByClickOverlay(event) {
   if (event.target === event.currentTarget) {
     closePopup(event.target.closest('.popup'));
     removeEventForCloseFromEscape();
-
   };
 }
 // Add & Remove Event For Close Popup On 'Escape'

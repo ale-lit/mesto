@@ -4,4 +4,9 @@
   height: 282px;
   border-radius: 10px 10px 0 0;
   cursor: zoom-in;
+  display: block;
+  transition: all .3s ease-in-out;
+}
+.place__photo:hover {
+  opacity: .8;
 }
