@@ -94,6 +94,19 @@ popupElements.forEach((element) => {
   });
 });
 
+document.addEventListener('keydown', closePopupByPressEscape);
+
+// const inputs = [...document.querySelectorAll('.popup__input')];
+
+// inputs.forEach((input));
+// input.addEventListener('keydown', function (evt) {
+//   // Проверяем, была ли введена цифра
+//     if (Number.isNaN(Number(evt.key))) {
+//     // Если пользователь ввёл не цифру, показываем блок с ошибкой
+//     error.style.display = 'block';
+//     };
+// });
+
 // ********************************************
 // *** FUNCTIONS ***
 // ********************************************
@@ -157,6 +170,13 @@ function closePopup(popup) {
 function closePopupByClickOverlay(event) {
   if (event.target === event.currentTarget) {
     closePopup(event.target.closest('.popup'));
+  };
+}
+// Close Popup From Press Escape
+function closePopupByPressEscape(event) {
+  if(event.key === 'Escape') {
+    const currPopup = document.querySelector('.popup_opened');
+    closePopup(currPopup);
   };
 }
 
