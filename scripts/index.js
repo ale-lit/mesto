@@ -30,34 +30,6 @@ const popupImagePreviewFigCaption = popupImagePreviewFigure.querySelector('.popu
 const popupElements = document.querySelectorAll('.popup');
 const popupCloseButtons = document.querySelectorAll('.popup__close-button');
 
-// Initial Cards Array
-const initialCards = [
-  {
-    name: 'Пушкин',
-    link: './images/places/pushkin.jpg'
-  },
-  {
-    name: 'Карелия',
-    link: './images/places/karelia.jpg'
-  },
-  {
-    name: 'Судак',
-    link: './images/places/sudak.jpg'
-  },
-  {
-    name: 'Геленджик',
-    link: './images/places/gelendjick.jpg'
-  },
-  {
-    name: 'Сочи',
-    link: './images/places/sochi.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: './images/places/kamchatka.jpg'
-  }
-];
-
 // ********************************************
 // *** EVENTS ***
 // ********************************************
@@ -70,9 +42,9 @@ editButtonElement.addEventListener('click', () => {
   inputSpeciality.value = currentSpecialityElement.textContent;
 
   // Validate Form On Every Open
-  handleFieldValidation(inputName);
-  handleFieldValidation(inputSpeciality);
-  toggleButton(popupEditProfileForm);
+  // handleFieldValidation(inputName);
+  // handleFieldValidation(inputSpeciality);
+  // toggleButton(popupEditProfileForm);
 
   popupEditProfileForm.addEventListener('submit', changeProfile);
   openPopup(popupEditProfile);
@@ -82,8 +54,8 @@ addButtonElement.addEventListener('click', () => {
   inputPlaceName.value = '';
   inputImageSource.value = '';
 
-  // Validate Form On Every Open
-  toggleButton(popupAddNewPlaceForm);
+  // // Validate Form On Every Open
+  // toggleButton(popupAddNewPlaceForm);
 
   popupAddNewPlaceForm.addEventListener('submit', addNewCard);
   openPopup(popupAddNewPlace);
@@ -166,7 +138,6 @@ function closePopup(popup) {
 function closePopupByClickOverlay(event) {
   if (event.target === event.currentTarget) {
     closePopup(event.target.closest('.popup'));
-    removeEventForCloseFromEscape();
   };
 }
 // Add & Remove Event For Close Popup On 'Escape'
