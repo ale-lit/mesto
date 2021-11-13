@@ -35,3 +35,4 @@ https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0
 ## Чеклисты по работе
 https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-4/index.html
 https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-5/index.html
+https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-6/index.html
