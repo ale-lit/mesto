@@ -13,7 +13,6 @@ enableValidation();
 
 function addListenersToForm(form) {
   form.addEventListener('input', handleFormInput);
-
   toggleButton(form);
 }
 
@@ -24,15 +23,11 @@ function handleFormInput(evt) {
 
 function handleFieldValidation(element) {
 	const errorContainer = document.querySelector(`#${element.id}-error`);
-
 	element.classList.toggle(setting.inputErrorClass, !element.validity.valid);
-
 	errorContainer.textContent = element.validationMessage;
 }
 
 function toggleButton(form) {
   const button = form.querySelector(setting.submitButtonSelector);
-  const isFormInvalid = !form.checkValidity();
-
-  button.disabled = isFormInvalid;
+  button.disabled = !form.checkValidity();
 }
