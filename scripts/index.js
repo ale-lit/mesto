@@ -7,10 +7,10 @@ const rootElement = document.querySelector('.root');
 const headLogoElement = rootElement.querySelector('.header__logo');
 const placesElement = document.querySelector('.places');
 const placeTemplate = document.querySelector('#place').content;
-const editButtonElement = rootElement.querySelector('.profile__edit-button');
+const profileButtonElement = rootElement.querySelector('.profile__edit-button');
 const currentNameElement = rootElement.querySelector('.profile__name');
 const currentSpecialityElement = rootElement.querySelector('.profile__speciality');
-const addButtonElement = document.querySelector('.profile__add-button');
+const newCardButtonElement = document.querySelector('.profile__add-button');
 // Popups Elements
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
@@ -36,27 +36,16 @@ const popupCloseButtons = document.querySelectorAll('.popup__close-button');
 
 headLogoElement.addEventListener('click', changeTheme);
 
-editButtonElement.addEventListener('click', () => {
+profileButtonElement.addEventListener('click', () => {
   // Update Actual Data In Inputs
   inputName.value = currentNameElement.textContent;
   inputSpeciality.value = currentSpecialityElement.textContent;
-
-  // Validate Form On Every Open
-  // handleFieldValidation(inputName);
-  // handleFieldValidation(inputSpeciality);
-  // toggleButton(popupEditProfileForm);
 
   popupEditProfileForm.addEventListener('submit', changeProfile);
   openPopup(popupEditProfile);
 });
 
-addButtonElement.addEventListener('click', () => {
-  inputPlaceName.value = '';
-  inputImageSource.value = '';
-
-  // // Validate Form On Every Open
-  // toggleButton(popupAddNewPlaceForm);
-
+newCardButtonElement.addEventListener('click', () => {
   popupAddNewPlaceForm.addEventListener('submit', addNewCard);
   openPopup(popupAddNewPlace);
 });
@@ -128,8 +117,27 @@ function openPopup(popup) {
   addEventForCloseFromEscape();
 }
 
+// RESET FORM TO DEFAULT
+function resetForm(popup) {
+  const form = popup.querySelector('.popup__form');
+
+  if(form) {
+    const inputList = getInputList(form);
+
+    // Reset Inputs
+    form.reset();
+    // Clear Errors
+    inputList.forEach((input) => {
+      hideInputError(input);
+    });
+    // Reset Button State
+    toggleButtonState(form);
+  }
+}
+
 // CLOSE POPUP
 function closePopup(popup) {
+  resetForm(popup);
   // Delete Open Class
   popup.classList.remove('popup_opened');
   removeEventForCloseFromEscape();
@@ -190,7 +198,7 @@ function changeTheme() {
   // Add / Remove Mod Classes
   rootElement.classList.toggle('root_theme_light');
   headLogoElement.classList.toggle('header__logo_theme_light');
-  editButtonElement.classList.toggle('profile__edit-button_theme_light');
+  profileButtonElement.classList.toggle('profile__edit-button_theme_light');
 
   // Select All Actual Place Blocks
   const placeElement = rootElement.querySelectorAll('.place');
