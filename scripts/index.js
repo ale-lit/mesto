@@ -7,10 +7,10 @@ const rootElement = document.querySelector('.root');
 const headLogoElement = rootElement.querySelector('.header__logo');
 const placesElement = document.querySelector('.places');
 const placeTemplate = document.querySelector('#place').content;
-const profileButtonElement = rootElement.querySelector('.profile__edit-button');
+const editProfileButton = rootElement.querySelector('.profile__edit-button');
 const currentNameElement = rootElement.querySelector('.profile__name');
 const currentSpecialityElement = rootElement.querySelector('.profile__speciality');
-const newCardButtonElement = document.querySelector('.profile__add-button');
+const addNewCardButton = document.querySelector('.profile__add-button');
 // Popups Elements
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
@@ -30,23 +30,25 @@ const popupImagePreviewFigCaption = popupImagePreviewFigure.querySelector('.popu
 const popupElements = document.querySelectorAll('.popup');
 const popupCloseButtons = document.querySelectorAll('.popup__close-button');
 
+
 // ********************************************
 // *** EVENTS ***
 // ********************************************
 
 headLogoElement.addEventListener('click', changeTheme);
 
-profileButtonElement.addEventListener('click', () => {
+popupEditProfileForm.addEventListener('submit', changeProfile);
+popupAddNewPlaceForm.addEventListener('submit', addNewCard);
+
+editProfileButton.addEventListener('click', () => {
   // Update Actual Data In Inputs
   inputName.value = currentNameElement.textContent;
   inputSpeciality.value = currentSpecialityElement.textContent;
 
-  popupEditProfileForm.addEventListener('submit', changeProfile);
   openPopup(popupEditProfile);
 });
 
-newCardButtonElement.addEventListener('click', () => {
-  popupAddNewPlaceForm.addEventListener('submit', addNewCard);
+addNewCardButton.addEventListener('click', () => {
   openPopup(popupAddNewPlace);
 });
 
@@ -57,10 +59,9 @@ popupCloseButtons.forEach((element) => {
 });
 
 popupElements.forEach((element) => {
-  element.addEventListener('click', (event) => {
-    closePopupByClickOverlay(event);
-  });
+  element.addEventListener('click', closePopupByClickOverlay);
 });
+
 
 // ********************************************
 // *** FUNCTIONS ***
@@ -79,14 +80,16 @@ addCardsOnloadPage();
 function createCard(data) {
   // Clone Element From Template
   const card = placeTemplate.querySelector('.place').cloneNode(true);
+  // Get Image Element
+  const cardImage = card.querySelector('.place__photo');
   // Insert Content
-  card.querySelector('.place__photo').src = data.link;
-  card.querySelector('.place__photo').alt = data.name;
+  cardImage.src = data.link;
+  cardImage.alt = data.name;
   card.querySelector('.place__name').textContent = data.name;
   // Add Events
   card.querySelector('.place__like').addEventListener('click', addRemoveLike);
   card.querySelector('.place__delete').addEventListener('click', deletePlace);
-  card.querySelector('.place__photo').addEventListener('click', () => {
+  cardImage.addEventListener('click', () => {
     // Change Image
     popupImageElement.src = data.link;
     popupImageElement.alt = data.name;
@@ -117,27 +120,8 @@ function openPopup(popup) {
   addEventForCloseFromEscape();
 }
 
-// RESET FORM TO DEFAULT
-function resetForm(popup) {
-  const form = popup.querySelector('.popup__form');
-
-  if(form) {
-    const inputList = getInputList(form);
-
-    // Reset Inputs
-    form.reset();
-    // Clear Errors
-    inputList.forEach((input) => {
-      hideInputError(input);
-    });
-    // Reset Button State
-    toggleButtonState(form);
-  }
-}
-
 // CLOSE POPUP
 function closePopup(popup) {
-  resetForm(popup);
   // Delete Open Class
   popup.classList.remove('popup_opened');
   removeEventForCloseFromEscape();
@@ -198,7 +182,7 @@ function changeTheme() {
   // Add / Remove Mod Classes
   rootElement.classList.toggle('root_theme_light');
   headLogoElement.classList.toggle('header__logo_theme_light');
-  profileButtonElement.classList.toggle('profile__edit-button_theme_light');
+  editProfileButton.classList.toggle('profile__edit-button_theme_light');
 
   // Select All Actual Place Blocks
   const placeElement = rootElement.querySelectorAll('.place');
