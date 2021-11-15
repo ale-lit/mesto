@@ -49,9 +49,6 @@ editProfileButton.addEventListener('click', () => {
 });
 
 addNewCardButton.addEventListener('click', () => {
-  inputPlaceName.value = '';
-  inputImageSource.value = '';
-
   openPopup(popupAddNewPlace);
 });
 
@@ -172,6 +169,8 @@ function addNewCard(evt) {
   };
   // Create & Render New Place
   renderCard(createCard(newPlace));
+  // Clear Form
+  evt.target.reset();
 
   closePopup(popupAddNewPlace);
 }
