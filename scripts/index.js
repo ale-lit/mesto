@@ -49,6 +49,9 @@ editProfileButton.addEventListener('click', () => {
 });
 
 addNewCardButton.addEventListener('click', () => {
+  inputPlaceName.value = '';
+  inputImageSource.value = '';
+
   openPopup(popupAddNewPlace);
 });
 
@@ -124,6 +127,7 @@ function openPopup(popup) {
 function closePopup(popup) {
   // Delete Open Class
   popup.classList.remove('popup_opened');
+  // Delete Event
   removeEventForCloseFromEscape();
 }
 // Close Popup From Click Overlay
