@@ -7,7 +7,7 @@ enableValidation({
   errorClass: 'popup__error_visible'
 });
 
-// INITIALIZE VALIDATION
+// START VALIDATION
 function enableValidation(params) {
   const formList = [...document.querySelectorAll(params.formSelector)];
 
