@@ -19,6 +19,12 @@ function enableValidation(params) {
     // Events For Clear Form
     form.addEventListener('submit', () => {resetForm(form, params)});
     form.closest(params.parentFormSelector).querySelector(params.closeButtonSelector).addEventListener('click', () => {resetForm(form, params)});
+    form.closest(params.parentFormSelector).addEventListener('click', resetFormByClickOverlay);
+    function resetFormByClickOverlay(event) {
+      if (event.target === event.currentTarget) {
+        resetForm(form, params);
+      };
+    }
   });
 };
 
