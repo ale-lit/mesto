@@ -1,10 +1,12 @@
 enableValidation({
+  parentFormSelector: '.popup',
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__save-button',
   inactiveButtonClass: 'popup__save-button_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
+  errorClass: 'popup__error_visible',
+  closeButtonSelector: '.popup__close-button'
 });
 
 // START VALIDATION
@@ -13,6 +15,10 @@ function enableValidation(params) {
 
   formList.forEach((form) => {
     setEventListeners(form, params);
+
+    // Events For Clear Form
+    form.addEventListener('submit', () => {resetForm(form, params)});
+    form.closest(params.parentFormSelector).querySelector(params.closeButtonSelector).addEventListener('click', () => {resetForm(form, params)});
   });
 };
 
@@ -88,4 +94,17 @@ function disableFormButton(button, params) {
 function enabeFormButton(button, params) {
   button.classList.remove(params.inactiveButtonClass);
   button.disabled = false;
+}
+
+// RESET FORM TO DEFAULT
+function resetForm(form, params) {
+  const inputList = getInputList(form, params);
+  // Reset Inputs
+  form.reset();
+  // Clear Errors
+  inputList.forEach((input) => {
+    hideInputError(input, params);
+  });
+  // Reset Button State
+  toggleButtonState(form, params);
 }
