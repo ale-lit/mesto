@@ -20,6 +20,7 @@
 - Увеличение фотографии по клику на карточке
 - Лайв-валидация форм на JS
 - Возможность закрытия модальных окон клавишей 'Esc' на клавиатуре
+- ключевые функции разнесены по классам и отдельным файлам, подключаемым при помощи экспорта/импорта в основной код
 
 ## Используемые навыки и технологии
 * HTML 5
@@ -34,6 +35,7 @@ https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0
 https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1
 
 ## Чеклисты по работе
-https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-4/index.html  
-https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-5/index.html  
-https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-6/index.html  
+https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-4/index.html
+https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-5/index.html
+https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-6/index.html
+https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-7/index.html
