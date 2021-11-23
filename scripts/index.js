@@ -89,8 +89,6 @@ export function openPopup(popup) {
 
 // CLOSE POPUP
 function closePopup(popup) {
-  const form = popup.querySelector('.popup__form');
-
   // Delete Open Class
   popup.classList.remove('popup_opened');
   // Delete Event
