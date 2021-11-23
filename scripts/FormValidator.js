@@ -14,6 +14,21 @@ export default class FormValidator {
   // START VALIDATION
   enableValidation() {
     this._setEventListeners(this._form);
+
+    // Events For Clear Form
+    this._form.addEventListener('submit', () => {this._resetForm(this._form)});
+    this._form.closest(this._parentFormSelector).querySelector(this._closeButtonSelector).addEventListener('click', () => {
+      this._resetForm(this._form);
+    });
+    this._form.closest(this._parentFormSelector).addEventListener('click', (evt) => {
+      this._resetFormByClickOverlay(evt, this);
+    });
+  }
+
+  _resetFormByClickOverlay(evt, ths) {
+    if (evt.target === evt.currentTarget) {
+      ths._resetForm(ths._form);
+    };
   }
 
   _setEventListeners(form) {
