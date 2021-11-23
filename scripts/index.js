@@ -1,3 +1,7 @@
+import initialCards from './initialCards.js';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+
 // ********************************************
 // *** DOM DEFINITION ***
 // ********************************************
@@ -5,8 +9,6 @@
 // DOM Elements
 const rootElement = document.querySelector('.root');
 const headLogoElement = rootElement.querySelector('.header__logo');
-const placesElement = document.querySelector('.places');
-const placeTemplate = document.querySelector('#place').content;
 const editProfileButton = rootElement.querySelector('.profile__edit-button');
 const currentNameElement = rootElement.querySelector('.profile__name');
 const currentSpecialityElement = rootElement.querySelector('.profile__speciality');
@@ -21,11 +23,6 @@ const popupAddNewPlace = document.querySelector('.popup_type_add-place');
 const popupAddNewPlaceForm = popupAddNewPlace.querySelector('.popup__form');
 const inputPlaceName = popupAddNewPlaceForm.querySelector('#input-place-name');
 const inputImageSource = popupAddNewPlaceForm.querySelector('#input-image-source');
-
-const popupImagePreview = document.querySelector('.popup_type_image-preview');
-const popupImagePreviewFigure = popupImagePreview.querySelector('.popup__figure');
-const popupImageElement = popupImagePreviewFigure.querySelector('.popup__image');
-const popupImagePreviewFigCaption = popupImagePreviewFigure.querySelector('.popup__figcaption');
 
 const popupElements = document.querySelectorAll('.popup');
 const popupCloseButtons = document.querySelectorAll('.popup__close-button');
@@ -67,54 +64,19 @@ popupElements.forEach((element) => {
 // *** FUNCTIONS ***
 // ********************************************
 
-// ADD SAVED CARDS ON LOAD PAGE
-function addCardsOnloadPage() {
-  initialCards.forEach((item) => {
-    // Create & Render Cards
-    renderCard(createCard(item));
-  });
-}
-addCardsOnloadPage();
-
-// CREATE CARD
-function createCard(data) {
-  // Clone Element From Template
-  const card = placeTemplate.querySelector('.place').cloneNode(true);
-  // Get Image Element
-  const cardImage = card.querySelector('.place__photo');
-  // Insert Content
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-  card.querySelector('.place__name').textContent = data.name;
-  // Add Events
-  card.querySelector('.place__like').addEventListener('click', addRemoveLike);
-  card.querySelector('.place__delete').addEventListener('click', deletePlace);
-  cardImage.addEventListener('click', () => {
-    // Change Image
-    popupImageElement.src = data.link;
-    popupImageElement.alt = data.name;
-    // Insert Figcaption Value
-    popupImagePreviewFigCaption.textContent = data.name;
-
-    openPopup(popupImagePreview);
-  });
-  // Return
-  return card;
-}
-
 // RENDER CARD
-function renderCard(card) {
-  // Add Ready Element
-  placesElement.prepend(card);
-}
 
-// DELETE PLACE FUNCTIONAL
-function deletePlace(event) {
-  event.target.closest('.place').remove();
+function renderCard(data) {
+  // Create & Render New Place
+  const card = new Card(data, '#place');
+  const cardElement = card.generateCard();
+
+  // Добавляем в DOM
+  document.querySelector('.places').prepend(cardElement);
 }
 
 // OPEN POPUP
-function openPopup(popup) {
+export function openPopup(popup) {
   // Add Open Class
   popup.classList.add('popup_opened');
   // Add Event
@@ -129,9 +91,6 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
   // Delete Event
   document.removeEventListener('keydown', closePopupByPressEscape);
-
-  // Clear Form
-  //if(form) resetForm(form);
 }
 // Close Popup From Click Overlay
 function closePopupByClickOverlay(event) {
@@ -166,17 +125,13 @@ function addNewCard(evt) {
     name: inputPlaceName.value,
     link: inputImageSource.value
   };
-  // Create & Render New Place
-  renderCard(createCard(newPlace));
+
+  renderCard(newPlace);
+
   // Clear Form
   evt.target.reset();
 
   closePopup(popupAddNewPlace);
-}
-
-// ADD / REMOVE LIKES
-function addRemoveLike(event) {
-  event.target.classList.toggle('place__like_active');
 }
 
 // CHANGE THEME
@@ -192,3 +147,47 @@ function changeTheme() {
     element.classList.toggle('place_theme_light');
   });
 }
+
+// ADD SAVED CARDS ON LOAD PAGE
+initialCards.forEach((item) => {
+  renderCard(item);
+});
+
+
+// _setEventListeners() {
+//   this._element.addEventListener('click', () => {
+//     this._handleOpenPopup();
+//   });
+
+//   popupCloseButton.addEventListener('click', () => {
+//     this._handleClosePopup();
+//   });
+// }
+
+// _handleOpenPopup() {
+//   popupImage.src = this._image;
+//   popupElement.classList.add('popup_is-opened');
+// }
+
+// _handleClosePopup() {
+//   popupImage.src = '';
+//   popupElement.classList.remove('popup_is-opened');
+// }
+
+// VALIDATION FORMS
+const settings = {
+  parentFormSelector: '.popup',
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible',
+  closeButtonSelector: '.popup__close-button'
+}
+
+document.querySelectorAll('.popup__form').forEach((form) => {
+  const formElement = new FormValidator(settings, form);
+  formElement.enableValidation();
+});
+

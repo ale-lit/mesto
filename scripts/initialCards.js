@@ -1,5 +1,4 @@
-// Initial Cards Array
-const initialCards = [
+export default [
   {
     name: 'Пушкин',
     link: './images/places/pushkin.jpg'
