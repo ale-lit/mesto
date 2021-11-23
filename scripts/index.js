@@ -65,7 +65,6 @@ popupElements.forEach((element) => {
 // ********************************************
 
 // RENDER CARD
-
 function renderCard(data) {
   // Create & Render New Place
   const card = new Card(data, '#place');
@@ -152,27 +151,6 @@ function changeTheme() {
 initialCards.forEach((item) => {
   renderCard(item);
 });
-
-
-// _setEventListeners() {
-//   this._element.addEventListener('click', () => {
-//     this._handleOpenPopup();
-//   });
-
-//   popupCloseButton.addEventListener('click', () => {
-//     this._handleClosePopup();
-//   });
-// }
-
-// _handleOpenPopup() {
-//   popupImage.src = this._image;
-//   popupElement.classList.add('popup_is-opened');
-// }
-
-// _handleClosePopup() {
-//   popupImage.src = '';
-//   popupElement.classList.remove('popup_is-opened');
-// }
 
 // VALIDATION FORMS
 const settings = {
