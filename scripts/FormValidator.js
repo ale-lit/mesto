@@ -1,7 +1,6 @@
 export default class FormValidator {
   constructor(data, form) {
     this._parentFormSelector = data.parentFormSelector;
-    this._formSelector = data.formSelector;
     this._inputSelector = data.inputSelector;
     this._submitButtonSelector = data.submitButtonSelector;
     this._inactiveButtonClass = data.inactiveButtonClass;
@@ -14,21 +13,7 @@ export default class FormValidator {
 
   // START VALIDATION
   enableValidation() {
-    const formList = [...document.querySelectorAll(this._formSelector)];
-
-    formList.forEach((form) => {
-      this._setEventListeners(form);
-
-      // Events For Clear Form
-      form.addEventListener('submit', () => {this._resetForm(form)});
-      form.closest(this._parentFormSelector).querySelector(this._closeButtonSelector).addEventListener('click', () => {this._resetForm(form)});
-      form.closest(this._parentFormSelector).addEventListener('click', resetFormByClickOverlay);
-      function resetFormByClickOverlay(event) {
-        if (event.target === event.currentTarget) {
-          this._resetForm(form);
-        };
-      }
-    });
+    this._setEventListeners(this._form);
   }
 
   _setEventListeners(form) {
