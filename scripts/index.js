@@ -64,6 +64,11 @@ popupElements.forEach((element) => {
 // *** FUNCTIONS ***
 // ********************************************
 
+// ADD SAVED CARDS ON LOAD PAGE
+initialCards.forEach((item) => {
+  renderCard(item);
+});
+
 // RENDER CARD
 function renderCard(data) {
   // Create & Render New Place
@@ -146,11 +151,6 @@ function changeTheme() {
     element.classList.toggle('place_theme_light');
   });
 }
-
-// ADD SAVED CARDS ON LOAD PAGE
-initialCards.forEach((item) => {
-  renderCard(item);
-});
 
 // VALIDATION FORMS
 const settings = {
