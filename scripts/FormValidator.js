@@ -1,12 +1,12 @@
 export default class FormValidator {
   constructor(data, form) {
     this._parentFormSelector = data.parentFormSelector;
-    this._inputSelector = data.inputSelector;
-    this._submitButtonSelector = data.submitButtonSelector;
     this._inactiveButtonClass = data.inactiveButtonClass;
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
     this._closeButtonSelector = data.closeButtonSelector;
+    this._inputList = [...form.querySelectorAll(data.inputSelector)];
+    this._submitButton = form.querySelector(data.submitButtonSelector);
 
     this._form = form;
   }
@@ -32,11 +32,9 @@ export default class FormValidator {
   }
 
   _setEventListeners(form) {
-    const inputList = this._getInputList(form);
-
     this._toggleButtonState(form);
 
-    inputList.forEach((input) => {
+    this._inputList.forEach((input) => {
       input.addEventListener('input', () => {
         this._checkformValidation(form, input);
       });
@@ -55,11 +53,6 @@ export default class FormValidator {
       this._hideInputError(input);
     }
   };
-
-  // GET ALL INPUTS FROM FORM
-  _getInputList(form) {
-    return [...form.querySelectorAll(this._inputSelector)];
-  }
 
   // ERROR MESSAGE
   _showInputError(input) {
@@ -84,19 +77,15 @@ export default class FormValidator {
 
   // CHECK BUTTON
   _toggleButtonState(form) {
-    const buttonElement = form.querySelector(this._submitButtonSelector);
-
     if (this._hasInvalidInput(form)) {
-      this._disableFormButton(buttonElement);
+      this._disableFormButton(this._submitButton);
     } else {
-      this._enabeFormButton(buttonElement);
+      this._enabeFormButton(this._submitButton);
     }
   }
 
   _hasInvalidInput(form) {
-    const inputList = this._getInputList(form);
-
-    return inputList.some((input) => {
+    return this._inputList.some((input) => {
       return !input.validity.valid;
     })
   }
@@ -113,11 +102,10 @@ export default class FormValidator {
 
   // RESET FORM TO DEFAULT
   _resetForm(form) {
-    const inputList = this._getInputList(form);
     // Reset Inputs
     form.reset();
     // Clear Errors
-    inputList.forEach((input) => {
+    this._inputList.forEach((input) => {
       this._hideInputError(input);
     });
     // Reset Button State
