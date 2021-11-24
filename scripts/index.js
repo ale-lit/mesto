@@ -1,31 +1,11 @@
 import initialCards from './initialCards.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
-
-// ********************************************
-// *** DOM DEFINITION ***
-// ********************************************
-
-// DOM Elements
-const rootElement = document.querySelector('.root');
-const headLogoElement = rootElement.querySelector('.header__logo');
-const editProfileButton = rootElement.querySelector('.profile__edit-button');
-const currentNameElement = rootElement.querySelector('.profile__name');
-const currentSpecialityElement = rootElement.querySelector('.profile__speciality');
-const addNewCardButton = document.querySelector('.profile__add-button');
-// Popups Elements
-const popupEditProfile = document.querySelector('.popup_type_edit-profile');
-const popupEditProfileForm = popupEditProfile.querySelector('.popup__form');
-const inputName = popupEditProfileForm.querySelector('#input-name');
-const inputSpeciality = popupEditProfileForm.querySelector('#input-speciality');
-
-const popupAddNewPlace = document.querySelector('.popup_type_add-place');
-const popupAddNewPlaceForm = popupAddNewPlace.querySelector('.popup__form');
-const inputPlaceName = popupAddNewPlaceForm.querySelector('#input-place-name');
-const inputImageSource = popupAddNewPlaceForm.querySelector('#input-image-source');
-
-const popupElements = document.querySelectorAll('.popup');
-const popupCloseButtons = document.querySelectorAll('.popup__close-button');
+import {
+  rootElement, headLogoElement, editProfileButton, currentNameElement, currentSpecialityElement,
+  addNewCardButton, placesContainer, popupEditProfile, popupEditProfileForm, inputName, inputSpeciality,
+  popupAddNewPlace, popupAddNewPlaceForm, inputPlaceName, inputImageSource, popupElements, popupCloseButtons
+} from './constants.js';
 
 
 // ********************************************
@@ -56,7 +36,7 @@ popupCloseButtons.forEach((element) => {
 });
 
 popupElements.forEach((element) => {
-  element.addEventListener('click', closePopupByClickOverlay);
+  element.addEventListener('mousedown', closePopupByClickOverlay);
 });
 
 
@@ -66,17 +46,19 @@ popupElements.forEach((element) => {
 
 // ADD SAVED CARDS ON LOAD PAGE
 initialCards.forEach((item) => {
-  renderCard(item);
+  addCardToContainer(renderCard(item));
 });
 
 // RENDER CARD
 function renderCard(data) {
-  // Create & Render New Place
   const card = new Card(data, '#place');
   const cardElement = card.generateCard();
+  return cardElement;
+}
 
-  // Добавляем в DOM
-  document.querySelector('.places').prepend(cardElement);
+// ADD CARD
+function addCardToContainer(card) {
+  placesContainer.prepend(card);
 }
 
 // OPEN POPUP
@@ -128,7 +110,7 @@ function addNewCard(evt) {
     link: inputImageSource.value
   };
 
-  renderCard(newPlace);
+  addCardToContainer(renderCard(newPlace));
 
   // Clear Form
   evt.target.reset();

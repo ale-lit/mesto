@@ -20,7 +20,7 @@ export default class FormValidator {
     this._form.closest(this._parentFormSelector).querySelector(this._closeButtonSelector).addEventListener('click', () => {
       this._resetForm(this._form);
     });
-    this._form.closest(this._parentFormSelector).addEventListener('click', (evt) => {
+    this._form.closest(this._parentFormSelector).addEventListener('mousedown', (evt) => {
       this._resetFormByClickOverlay(evt, this);
     });
   }

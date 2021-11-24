@@ -1,9 +1,5 @@
 import {openPopup} from './index.js';
-
-const popupImagePreview = document.querySelector('.popup_type_image-preview');
-const popupImagePreviewFigure = popupImagePreview.querySelector('.popup__figure');
-const popupImageElement = popupImagePreviewFigure.querySelector('.popup__image');
-const popupImagePreviewFigCaption = popupImagePreviewFigure.querySelector('.popup__figcaption');
+import {popupImagePreview, popupImagePreviewFigure, popupImageElement, popupImagePreviewFigCaption} from './constants.js';
 
 export default class Card {
   constructor(data, template) {
@@ -20,10 +16,12 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
 
+    const placePhoto = this._element.querySelector('.place__photo');
+
     // Insert Actual Info
     this._element.querySelector('.place__name').textContent = this._name;
-    this._element.querySelector('.place__photo').src = this._image;
-    this._element.querySelector('.place__photo').alt = this._name;
+    placePhoto.src = this._image;
+    placePhoto.alt = this._name;
 
     // Add Events
     this._setEventListeners();
@@ -52,6 +50,7 @@ export default class Card {
   // Delete Card
   _deletePlace(evt) {
     evt.target.closest('.place').remove();
+    this._element.remove();
   }
 
   // Open Popup
