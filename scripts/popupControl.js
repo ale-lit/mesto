@@ -11,7 +11,7 @@ function openPopup(popup) {
 function closePopup(popup) {
   // Delete Open Class
   popup.classList.remove('popup_opened');
-  // Delete Event
+  // Delete Events
   document.removeEventListener('keydown', closePopupByPressEscape);
   popup.removeEventListener('mousedown', closePopupByClickOverlay);
 }
