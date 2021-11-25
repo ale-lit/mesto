@@ -3,7 +3,7 @@ import FormValidator from './FormValidator.js';
 import {
   rootElement, headLogoElement, editProfileButton, currentNameElement, currentSpecialityElement,
   addNewCardButton, placesContainer, editProfileForm, addCardForm, popupEditProfile, popupEditProfileForm, inputName, inputSpeciality,
-  popupAddNewPlace, popupAddNewPlaceForm, inputPlaceName, inputImageSource, popupElements, popupCloseButtons
+  popupAddNewPlace, popupAddNewPlaceForm, inputPlaceName, inputImageSource, popupCloseButtons
 } from './constants.js';
 import { openPopup, closePopup } from './popupControl.js';
 import Card from './Card.js';

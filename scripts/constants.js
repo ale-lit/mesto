@@ -19,7 +19,6 @@ const popupAddNewPlaceForm = popupAddNewPlace.querySelector('.popup__form');
 const inputPlaceName = popupAddNewPlaceForm.querySelector('#input-place-name');
 const inputImageSource = popupAddNewPlaceForm.querySelector('#input-image-source');
 
-const popupElements = rootElement.querySelectorAll('.popup');
 const popupCloseButtons = rootElement.querySelectorAll('.popup__close-button');
 
 const popupImagePreview = document.querySelector('.popup_type_image-preview');
@@ -30,6 +29,6 @@ const popupImagePreviewFigCaption = popupImagePreviewFigure.querySelector('.popu
 export {
   rootElement, headLogoElement, editProfileButton, currentNameElement, currentSpecialityElement,
   addNewCardButton, placesContainer, editProfileForm, addCardForm, popupEditProfile, popupEditProfileForm, inputName, inputSpeciality,
-  popupAddNewPlace, popupAddNewPlaceForm, inputPlaceName, inputImageSource, popupElements, popupCloseButtons,
+  popupAddNewPlace, popupAddNewPlaceForm, inputPlaceName, inputImageSource, popupCloseButtons,
   popupImagePreview, popupImagePreviewFigure, popupImageElement, popupImagePreviewFigCaption
 };
