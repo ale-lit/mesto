@@ -1,5 +1,5 @@
-import {openPopup} from './index.js';
-import {popupImagePreview, popupImagePreviewFigure, popupImageElement, popupImagePreviewFigCaption} from './constants.js';
+import { openPopup } from './functions.js';
+import { popupImagePreview, popupImageElement, popupImagePreviewFigCaption } from './constants.js';
 
 export default class Card {
   constructor(data, template) {
@@ -34,7 +34,9 @@ export default class Card {
     this._element.querySelector('.place__like').addEventListener('click', this._addRemoveLike);
 
     // Delete
-    this._element.querySelector('.place__delete').addEventListener('click', this._deletePlace);
+    this._element.querySelector('.place__delete').addEventListener('click', () => {
+      this._deletePlace();
+    });
 
     // Preview
     this._element.querySelector('.place__photo').addEventListener('click', () => {
@@ -48,9 +50,9 @@ export default class Card {
   }
 
   // Delete Card
-  _deletePlace(evt) {
-    evt.target.closest('.place').remove();
+  _deletePlace() {
     this._element.remove();
+    this._element = null;
   }
 
   // Open Popup
