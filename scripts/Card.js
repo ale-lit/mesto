@@ -1,4 +1,4 @@
-import { openPopup } from './functions.js';
+import { openPopup } from './popupControl.js';
 import { popupImagePreview, popupImageElement, popupImagePreviewFigCaption } from './constants.js';
 
 export default class Card {
