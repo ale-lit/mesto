@@ -1,16 +1,7 @@
-import Card from './Card.js';
 import {
   rootElement, headLogoElement, editProfileButton, currentNameElement, currentSpecialityElement,
-  placesContainer, popupEditProfile, inputName, inputSpeciality,
-  popupAddNewPlace, inputPlaceName, inputImageSource
+  placesContainer, popupEditProfile, inputName, inputSpeciality
 } from './constants.js';
-
-// RENDER CARD
-function renderCard(data) {
-  const card = new Card(data, '#place');
-  const cardElement = card.generateCard();
-  return cardElement;
-}
 
 // ADD CARD
 function addCardToContainer(card) {
@@ -57,23 +48,6 @@ function changeProfile(evt) {
   closePopup(popupEditProfile);
 }
 
-// ADD NEW PLACE
-function addNewCard(evt) {
-  evt.preventDefault();
-  // Create New Place Object
-  const newPlace = {
-    name: inputPlaceName.value,
-    link: inputImageSource.value
-  };
-
-  addCardToContainer(renderCard(newPlace));
-
-  // Clear Form
-  evt.target.reset();
-
-  closePopup(popupAddNewPlace);
-}
-
 // CHANGE THEME
 function changeTheme() {
   // Add / Remove Mod Classes
@@ -88,4 +62,4 @@ function changeTheme() {
   });
 }
 
-export { renderCard, addCardToContainer, openPopup, closePopup, closePopupByClickOverlay, closePopupByPressEscape, changeProfile, addNewCard, changeTheme };
+export { addCardToContainer, openPopup, closePopup, closePopupByClickOverlay, closePopupByPressEscape, changeProfile, changeTheme };

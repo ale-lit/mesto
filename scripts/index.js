@@ -3,10 +3,35 @@ import FormValidator from './FormValidator.js';
 import {
   headLogoElement, editProfileButton, currentNameElement, currentSpecialityElement,
   addNewCardButton, editProfileForm, addCardForm, popupEditProfile, popupEditProfileForm, inputName, inputSpeciality,
-  popupAddNewPlace, popupAddNewPlaceForm, popupElements, popupCloseButtons
+  popupAddNewPlace, popupAddNewPlaceForm, popupElements, popupCloseButtons, inputPlaceName, inputImageSource
 } from './constants.js';
-import { renderCard, addCardToContainer, openPopup, closePopup, closePopupByClickOverlay, changeProfile, addNewCard, changeTheme } from './functions.js';
+import { addCardToContainer, openPopup, closePopup, closePopupByClickOverlay, changeProfile, changeTheme } from './functions.js';
+import Card from './Card.js';
 
+// RENDER CARD
+function renderCard(data) {
+  const card = new Card(data, '#place');
+  const cardElement = card.generateCard();
+  return cardElement;
+}
+
+
+// ADD NEW PLACE
+function addNewCard(evt) {
+  evt.preventDefault();
+  // Create New Place Object
+  const newPlace = {
+    name: inputPlaceName.value,
+    link: inputImageSource.value
+  };
+
+  addCardToContainer(renderCard(newPlace));
+
+  // Clear Form
+  evt.target.reset();
+
+  closePopup(popupAddNewPlace);
+}
 
 // ********************************************
 // *** EVENTS ***
