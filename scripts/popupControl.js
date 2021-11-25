@@ -2,8 +2,9 @@
 function openPopup(popup) {
   // Add Open Class
   popup.classList.add('popup_opened');
-  // Add Event
+  // Add Events
   document.addEventListener('keydown', closePopupByPressEscape);
+  popup.addEventListener('mousedown', closePopupByClickOverlay);
 }
 
 // CLOSE POPUP
@@ -12,7 +13,9 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
   // Delete Event
   document.removeEventListener('keydown', closePopupByPressEscape);
+  popup.removeEventListener('mousedown', closePopupByClickOverlay);
 }
+
 // Close Popup From Click Overlay
 function closePopupByClickOverlay(event) {
   if (event.target === event.currentTarget) {
@@ -27,4 +30,4 @@ function closePopupByPressEscape(event) {
   };
 }
 
-export { openPopup, closePopup, closePopupByClickOverlay, closePopupByPressEscape };
+export { openPopup, closePopup };

@@ -5,7 +5,7 @@ import {
   addNewCardButton, placesContainer, editProfileForm, addCardForm, popupEditProfile, popupEditProfileForm, inputName, inputSpeciality,
   popupAddNewPlace, popupAddNewPlaceForm, inputPlaceName, inputImageSource, popupElements, popupCloseButtons
 } from './constants.js';
-import { openPopup, closePopup, closePopupByClickOverlay } from './popupControl.js';
+import { openPopup, closePopup } from './popupControl.js';
 import Card from './Card.js';
 
 
@@ -34,10 +34,6 @@ popupCloseButtons.forEach((element) => {
   element.addEventListener('click', (event) => {
     closePopup(event.target.closest('.popup'));
   });
-});
-
-popupElements.forEach((element) => {
-  element.addEventListener('mousedown', closePopupByClickOverlay);
 });
 
 
