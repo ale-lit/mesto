@@ -39,3 +39,4 @@ https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-4/inde
 https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-5/index.html
 https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-6/index.html
 https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-7/index.html
+https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-8/index.html
