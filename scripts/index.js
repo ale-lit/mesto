@@ -3,11 +3,12 @@ import FormValidator from './FormValidator.js';
 import {
   rootElement, headLogoElement, editProfileButton, currentNameElement, currentSpecialityElement,
   addNewCardButton, placesContainer, editProfileForm, addCardForm, popupEditProfile, popupEditProfileForm, inputName, inputSpeciality,
-  popupAddNewPlace, popupAddNewPlaceForm, inputPlaceName, inputImageSource, popupCloseButtons
+  popupAddNewPlace, popupAddNewPlaceForm, inputPlaceName, inputImageSource, popupCloseButtons, containerSelector
 } from './constants.js';
-import { openPopup, closePopup } from './popupControl.js';
+//import { openPopup, closePopup } from './popupControl.js';
+import Section from './Section.js';
 import Card from './Card.js';
-
+import Popup from './Popup.js';
 
 // ********************************************
 // *** EVENTS ***
@@ -30,11 +31,11 @@ addNewCardButton.addEventListener('click', () => {
   openPopup(popupAddNewPlace);
 });
 
-popupCloseButtons.forEach((element) => {
-  element.addEventListener('click', (event) => {
-    closePopup(event.target.closest('.popup'));
-  });
-});
+// popupCloseButtons.forEach((element) => {
+//   element.addEventListener('click', (event) => {
+//     closePopup(event.target.closest('.popup'));
+//   });
+// });
 
 
 // ********************************************
@@ -42,32 +43,51 @@ popupCloseButtons.forEach((element) => {
 // ********************************************
 
 // ADD SAVED CARDS ON LOAD PAGE
-initialCards.forEach((item) => {
-  addCardToContainer(renderCard(item));
-});
-
-// RENDER CARD
-function renderCard(data) {
-  const card = new Card(data, '#place');
+const CardList = new Section({ items: initialCards, renderer: (item) => {
+  const card = new Card(item, '#place');
   const cardElement = card.generateCard();
-  return cardElement;
+  CardList.addItem(cardElement);
 }
+}, containerSelector);
+// ADD CARDS
+CardList.renderItems();
 
-// ADD CARD
-function addCardToContainer(card) {
-  placesContainer.prepend(card);
-}
+// // ADD SAVED CARDS ON LOAD PAGE
+// initialCards.forEach((item) => {
+//   addCardToContainer(renderCard(item));
+// });
+
+// // RENDER CARD
+// function renderCard(data) {
+//   const card = new Card(data, '#place');
+//   const cardElement = card.generateCard();
+//   return cardElement;
+// }
+
+// // ADD CARD
+// function addCardToContainer(card) {
+//   placesContainer.prepend(card);
+// }
 
 // ADD NEW PLACE
 function addNewCard(evt) {
   evt.preventDefault();
   // Create New Place Object
-  const newPlace = {
+  const newPlace = [{
     name: inputPlaceName.value,
     link: inputImageSource.value
-  };
+  }];
 
-  addCardToContainer(renderCard(newPlace));
+  //addCardToContainer(renderCard(newPlace));
+
+  const newCard = new Section({ items: newPlace, renderer: (item) => {
+    const card = new Card(item, '#place');
+    const cardElement = card.generateCard();
+    CardList.addItem(cardElement);
+  }
+  }, containerSelector);
+
+  newCard.renderItems();
 
   // Clear Form
   evt.target.reset();
