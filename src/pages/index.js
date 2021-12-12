@@ -7,11 +7,10 @@ import {
 } from '../scripts/utils/constants.js';
 import Section from '../scripts/components/Section.js';
 import Card from '../scripts/components/Card.js';
-
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
-
 import UserInfo from '../scripts/components/UserInfo.js';
+import './index.css';
 
 // ********************************************
 // *** EVENTS ***

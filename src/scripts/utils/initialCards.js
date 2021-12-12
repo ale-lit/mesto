@@ -1,26 +1,33 @@
+import pushkinImage from '../../images/places/pushkin.jpg';
+import kareliaImage from '../../images/places/karelia.jpg';
+import sudakImage from '../../images/places/sudak.jpg';
+import gelImage from '../../images/places/gelendjick.jpg';
+import sochiImage from '../../images/places/sochi.jpg';
+import kamchImage from '../../images/places/kamchatka.jpg';
+
 export default [
   {
     name: 'Пушкин',
-    link: './images/places/pushkin.jpg'
+    link: pushkinImage
   },
   {
     name: 'Карелия',
-    link: './images/places/karelia.jpg'
+    link: kareliaImage
   },
   {
     name: 'Судак',
-    link: './images/places/sudak.jpg'
+    link: sudakImage
   },
   {
     name: 'Геленджик',
-    link: './images/places/gelendjick.jpg'
+    link: gelImage
   },
   {
     name: 'Сочи',
-    link: './images/places/sochi.jpg'
+    link: sochiImage
   },
   {
     name: 'Камчатка',
-    link: './images/places/kamchatka.jpg'
+    link: kamchImage
   }
 ];
