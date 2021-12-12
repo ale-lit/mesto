@@ -9,8 +9,6 @@ import {
 import Section from './Section.js';
 import Card from './Card.js';
 
-import Popup from './Popup.js';
-
 import PopupWithImage from './PopupWithImage.js';
 import PopupWithForm from './PopupWithForm.js';
 
@@ -20,31 +18,44 @@ import PopupWithForm from './PopupWithForm.js';
 
 headLogoElement.addEventListener('click', changeTheme);
 
-popupEditProfileForm.addEventListener('submit', changeProfile);
+//popupEditProfileForm.addEventListener('submit', changeProfile);
 //popupAddNewPlaceForm.addEventListener('submit', addNewCard);
 
 editProfileButton.addEventListener('click', () => {
   // Update Actual Data In Inputs
-  inputName.value = currentNameElement.textContent;
-  inputSpeciality.value = currentSpecialityElement.textContent;
+  // inputName.value = currentNameElement.textContent;
+  // inputSpeciality.value = currentSpecialityElement.textContent;
 
-  openPopup(popupEditProfile);
+  popupUserEdit.open();
+  // openPopup(popupEditProfile);
 });
 
 addNewCardButton.addEventListener('click', () => {
-  popupWithForm.open();
+  popupAddCard.open();
 });
 
 
-const popupWithForm = new PopupWithForm('.popup_type_add-place', (formData) => {
+const popupAddCard = new PopupWithForm('.popup_type_add-place', (formData) => {
     const card = new Card(formData, '#place', () => {
-      popupWithImage.open(item);
+      popupWithImage.open(formData);
     });
     const cardElement = card.generateCard();
     cardsList.addItem(cardElement);
   }
 );
-popupWithForm.setEventListeners();
+popupAddCard.setEventListeners();
+
+
+
+const popupUserEdit = new PopupWithForm('.popup_type_edit-profile', (formData) => {
+  const card = new Card(formData, '#place', () => {
+    popupWithImage.open(formData);
+  });
+  const cardElement = card.generateCard();
+  cardsList.addItem(cardElement);
+}
+);
+popupUserEdit.setEventListeners();
 
 // popupCloseButtons.forEach((element) => {
 //   element.addEventListener('click', (event) => {
@@ -131,16 +142,16 @@ cardsList.renderItems();
 //   closePopup(popupAddNewPlace);
 // }
 
-// CHANGE PROFILE
-function changeProfile(evt) {
-  // Reset Default Hadler For Submit
-  evt.preventDefault();
-  // Change Content From User Choice
-  currentNameElement.textContent = inputName.value;
-  currentSpecialityElement.textContent = inputSpeciality.value;
+// // CHANGE PROFILE
+// function changeProfile(evt) {
+//   // Reset Default Hadler For Submit
+//   evt.preventDefault();
+//   // Change Content From User Choice
+//   currentNameElement.textContent = inputName.value;
+//   currentSpecialityElement.textContent = inputSpeciality.value;
 
-  closePopup(popupEditProfile);
-}
+//   closePopup(popupEditProfile);
+// }
 
 // CHANGE THEME
 function changeTheme() {
