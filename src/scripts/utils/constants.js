@@ -20,8 +20,18 @@ const popupImagePreviewFigure = document.querySelector('.popup__figure');
 const popupImageElement = popupImagePreviewFigure.querySelector('.popup__image');
 const popupImagePreviewFigCaption = popupImagePreviewFigure.querySelector('.popup__figcaption');
 
+const settings = {
+  parentFormSelector: '.popup',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible',
+  closeButtonSelector: '.popup__close-button'
+}
+
 export {
   rootElement, headLogoElement, editProfileButton, currentNameSelector, currentSpecialitySelector,
   addNewCardButton, placesContainerSelector, editProfileForm, addCardForm, popupEditProfileSelector, inputName, inputSpeciality,
-  popupAddNewPlaceSelector, popupImagePreviewSelector, popupImagePreviewFigure, popupImageElement, popupImagePreviewFigCaption
+  popupAddNewPlaceSelector, popupImagePreviewSelector, popupImagePreviewFigure, popupImageElement, popupImagePreviewFigCaption, settings
 };

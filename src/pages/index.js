@@ -3,7 +3,7 @@ import FormValidator from '../scripts/components/FormValidator.js';
 import {
   rootElement, headLogoElement, editProfileButton, currentNameSelector, currentSpecialitySelector,
   addNewCardButton, placesContainerSelector, editProfileForm, addCardForm, popupEditProfileSelector, popupImagePreviewSelector, inputName, inputSpeciality,
-  popupAddNewPlaceSelector
+  popupAddNewPlaceSelector, settings
 } from '../scripts/utils/constants.js';
 import Section from '../scripts/components/Section.js';
 import Card from '../scripts/components/Card.js';
@@ -22,19 +22,17 @@ editProfileButton.addEventListener('click', () => {
   const{name, speciality} = userInfo.getUserInfo();
   inputName.value = name;
   inputSpeciality.value = speciality;
+  profileFormValidator.resetValidation();
   popupUserEdit.open();
 });
 
 addNewCardButton.addEventListener('click', () => {
+  newCardFormValidator.resetValidation();
   popupAddCard.open();
 });
 
-const popupAddCard = new PopupWithForm(popupAddNewPlaceSelector, (formData) => {
-    const card = new Card(formData, '#place', () => {
-      popupWithImage.open(formData);
-    });
-    const cardElement = card.generateCard();
-    cardsList.addItem(cardElement);
+const popupAddCard = new PopupWithForm(popupAddNewPlaceSelector, (item) => {
+    cardsList.addItem(createCard(item));
   }
 );
 popupAddCard.setEventListeners();
@@ -52,16 +50,20 @@ popupUserEdit.setEventListeners();
 // *** FUNCTIONS ***
 // ********************************************
 
+function createCard(item) {
+    const card = new Card(item, '#place', () => {
+      popupWithImage.open(item);
+    });
+    const cardElement = card.generateCard();
+    return cardElement;
+}
+
 const popupWithImage = new PopupWithImage(popupImagePreviewSelector);
 popupWithImage.setEventListeners();
 
 // ADD SAVED CARDS ON LOAD PAGE
 const cardsList = new Section({ items: initialCards, renderer: (item) => {
-  const card = new Card(item, '#place', () => {
-    popupWithImage.open(item);
-  });
-  const cardElement = card.generateCard();
-  cardsList.addItem(cardElement);
+  cardsList.addItem(createCard(item));
 }
 }, placesContainerSelector);
 // RENDER CARDS
@@ -82,16 +84,6 @@ function changeTheme() {
 }
 
 // VALIDATION FORMS
-const settings = {
-  parentFormSelector: '.popup',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible',
-  closeButtonSelector: '.popup__close-button'
-}
-
 const profileFormValidator = new FormValidator(settings, editProfileForm);
 profileFormValidator.enableValidation();
 
