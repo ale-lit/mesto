@@ -9,12 +9,6 @@ export default class Section {
     this._items.forEach((item) => {
       this._renderer(item);
     });
-
-    // this._initialArray.forEach((item) => {
-    //   const card = new Card(item, '#place');
-    //   const cardElement = card.generateCard();
-    //   this.setItem(cardElement);
-    // });
   }
 
   addItem(element) {
