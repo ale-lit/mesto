@@ -7,12 +7,12 @@ export default class UserInfo {
   getUserInfo() {
     return {
       name: document.querySelector(this._nameSelector).textContent,
-      about: document.querySelector(this._aboutSelector).textContent
+      speciality: document.querySelector(this._aboutSelector).textContent
     };
   }
 
-  setUserInfo(name, about) {
+  setUserInfo({name, speciality}) {
     document.querySelector(this._nameSelector).textContent = name;
-    document.querySelector(this._aboutSelector).textContent = about;
+    document.querySelector(this._aboutSelector).textContent = speciality;
   }
 }

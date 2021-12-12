@@ -12,6 +12,8 @@ import Card from './Card.js';
 import PopupWithImage from './PopupWithImage.js';
 import PopupWithForm from './PopupWithForm.js';
 
+import UserInfo from './UserInfo.js';
+
 // ********************************************
 // *** EVENTS ***
 // ********************************************
@@ -23,9 +25,9 @@ headLogoElement.addEventListener('click', changeTheme);
 
 editProfileButton.addEventListener('click', () => {
   // Update Actual Data In Inputs
-  // inputName.value = currentNameElement.textContent;
-  // inputSpeciality.value = currentSpecialityElement.textContent;
-
+  const{name, speciality} = userInfo.getUserInfo();
+  inputName.value = name;
+  inputSpeciality.value = speciality;
   popupUserEdit.open();
   // openPopup(popupEditProfile);
 });
@@ -46,13 +48,17 @@ const popupAddCard = new PopupWithForm('.popup_type_add-place', (formData) => {
 popupAddCard.setEventListeners();
 
 
+const userInfo = new UserInfo('.profile__name', '.profile__speciality');
 
 const popupUserEdit = new PopupWithForm('.popup_type_edit-profile', (formData) => {
-  const card = new Card(formData, '#place', () => {
-    popupWithImage.open(formData);
-  });
-  const cardElement = card.generateCard();
-  cardsList.addItem(cardElement);
+  userInfo.setUserInfo(formData);
+
+  // const card = new Card(formData, '#place', () => {
+  //   popupWithImage.open(formData);
+  // });
+
+  // const cardElement = card.generateCard();
+  // cardsList.addItem(cardElement);
 }
 );
 popupUserEdit.setEventListeners();
