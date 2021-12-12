@@ -59,12 +59,12 @@
       <h2 class="popup__title">Новое место</h2>
       <form name="place-form" action="/" method="post" class="popup__form" id="addCard" novalidate>
         <div class="popup__field">
-          <input type="text" placeholder="Название" name="place-name" id="input-place-name" class="popup__input" minlength="2" maxlength="30" required>
+          <input type="text" placeholder="Название" name="name" id="input-place-name" class="popup__input" minlength="2" maxlength="30" required>
           <span id="input-place-name-error" class="popup__input-error"></span>
         </div>
 
         <div class="popup__field">
-          <input type="url" placeholder="Ссылка на картинку" name="image-source" id="input-image-source" class="popup__input" required>
+          <input type="url" placeholder="Ссылка на картинку" name="link" id="input-image-source" class="popup__input" required>
           <span id="input-image-source-error" class="popup__input-error"></span>
         </div>
         <input type="submit" value="Создать" class="popup__save-button">

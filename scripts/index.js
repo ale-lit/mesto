@@ -12,6 +12,7 @@ import Card from './Card.js';
 import Popup from './Popup.js';
 
 import PopupWithImage from './PopupWithImage.js';
+import PopupWithForm from './PopupWithForm.js';
 
 // ********************************************
 // *** EVENTS ***
@@ -20,7 +21,7 @@ import PopupWithImage from './PopupWithImage.js';
 headLogoElement.addEventListener('click', changeTheme);
 
 popupEditProfileForm.addEventListener('submit', changeProfile);
-popupAddNewPlaceForm.addEventListener('submit', addNewCard);
+//popupAddNewPlaceForm.addEventListener('submit', addNewCard);
 
 editProfileButton.addEventListener('click', () => {
   // Update Actual Data In Inputs
@@ -31,8 +32,19 @@ editProfileButton.addEventListener('click', () => {
 });
 
 addNewCardButton.addEventListener('click', () => {
-  openPopup(popupAddNewPlace);
+  popupWithForm.open();
 });
+
+
+const popupWithForm = new PopupWithForm('.popup_type_add-place', (formData) => {
+    const card = new Card(formData, '#place', () => {
+      popupWithImage.open(item);
+    });
+    const cardElement = card.generateCard();
+    cardsList.addItem(cardElement);
+  }
+);
+popupWithForm.setEventListeners();
 
 // popupCloseButtons.forEach((element) => {
 //   element.addEventListener('click', (event) => {
@@ -93,31 +105,31 @@ cardsList.renderItems();
 //   placesContainer.prepend(card);
 // }
 
-// ADD NEW PLACE
-function addNewCard(evt) {
-  evt.preventDefault();
-  // Create New Place Object
-  const newPlace = [{
-    name: inputPlaceName.value,
-    link: inputImageSource.value
-  }];
+// // ADD NEW PLACE
+// function addNewCard(evt) {
+//   evt.preventDefault();
+//   // Create New Place Object
+//   const newPlace = [{
+//     name: inputPlaceName.value,
+//     link: inputImageSource.value
+//   }];
 
-  //addCardToContainer(renderCard(newPlace));
+//   //addCardToContainer(renderCard(newPlace));
 
-  const newCard = new Section({ items: newPlace, renderer: (item) => {
-    const card = new Card(item, '#place');
-    const cardElement = card.generateCard();
-    CardList.addItem(cardElement);
-  }
-  }, containerSelector);
+//   const newCard = new Section({ items: newPlace, renderer: (item) => {
+//     const card = new Card(item, '#place');
+//     const cardElement = card.generateCard();
+//     CardList.addItem(cardElement);
+//   }
+//   }, containerSelector);
 
-  newCard.renderItems();
+//   newCard.renderItems();
 
-  // Clear Form
-  evt.target.reset();
+//   // Clear Form
+//   evt.target.reset();
 
-  closePopup(popupAddNewPlace);
-}
+//   closePopup(popupAddNewPlace);
+// }
 
 // CHANGE PROFILE
 function changeProfile(evt) {
