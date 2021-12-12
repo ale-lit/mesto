@@ -7,7 +7,7 @@ export default class Popup {
     // Add Open Class
     this._popup.classList.add('popup_opened');
     // Add Events
-    //document.addEventListener('keydown', closePopupByPressEscape);
+    document.addEventListener('keydown', this._handleEscClose.bind(this));
     //this._popup.addEventListener('mousedown', closePopupByClickOverlay);
   }
 
@@ -22,8 +22,6 @@ export default class Popup {
   _handleEscClose(evt) {
     if(evt.key === 'Escape') {
       this.close();
-      // const currPopup = document.querySelector('.popup_opened');
-      // closePopup(currPopup);
     };
   }
 
