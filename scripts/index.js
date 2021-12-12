@@ -46,6 +46,7 @@ addNewCardButton.addEventListener('click', () => {
 // ********************************************
 
 const popupWithImage = new PopupWithImage('.popup_type_image-preview');
+popupWithImage.setEventListeners();
 
 // ADD SAVED CARDS ON LOAD PAGE
 const cardsList = new Section({ items: initialCards, renderer: (item) => {
