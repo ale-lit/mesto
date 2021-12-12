@@ -41,8 +41,8 @@ export default class Card {
 
     // Preview
     this._element.querySelector('.place__photo').addEventListener('click', () => {
-      this._handleOpenPopup();
-    });;
+      this._handleCardClick();
+    });
   }
 
   // Likes
@@ -54,16 +54,5 @@ export default class Card {
   _deletePlace() {
     this._element.remove();
     this._element = null;
-  }
-
-  // Open Popup
-  _handleOpenPopup() {
-    // Change Image
-    popupImageElement.src = this._image;
-    popupImageElement.alt = this._name;
-    // Insert Figcaption Value
-    popupImagePreviewFigCaption.textContent = this._name;
-
-    openPopup(popupImagePreview);
   }
 }

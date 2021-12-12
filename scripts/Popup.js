@@ -7,8 +7,8 @@ export default class Popup {
     // Add Open Class
     this._popup.classList.add('popup_opened');
     // Add Events
-    document.addEventListener('keydown', closePopupByPressEscape);
-    this._popup.addEventListener('mousedown', closePopupByClickOverlay);
+    //document.addEventListener('keydown', closePopupByPressEscape);
+    //this._popup.addEventListener('mousedown', closePopupByClickOverlay);
   }
 
   close() {

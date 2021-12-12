@@ -8,7 +8,10 @@ import {
 //import { openPopup, closePopup } from './popupControl.js';
 import Section from './Section.js';
 import Card from './Card.js';
+
 import Popup from './Popup.js';
+
+import PopupWithImage from './PopupWithImage.js';
 
 // ********************************************
 // *** EVENTS ***
@@ -42,15 +45,35 @@ addNewCardButton.addEventListener('click', () => {
 // *** FUNCTIONS ***
 // ********************************************
 
+const popupWithImage = new PopupWithImage('.popup_type_image-preview');
+
 // ADD SAVED CARDS ON LOAD PAGE
-const CardList = new Section({ items: initialCards, renderer: (item) => {
-  const card = new Card(item, '#place');
+const cardsList = new Section({ items: initialCards, renderer: (item) => {
+  const card = new Card(item, '#place', () => {
+    popupWithImage.open(item);
+  });
   const cardElement = card.generateCard();
-  CardList.addItem(cardElement);
+  cardsList.addItem(cardElement);
 }
 }, containerSelector);
-// ADD CARDS
-CardList.renderItems();
+// RENDER CARDS
+cardsList.renderItems();
+
+
+
+
+// const newPlace = {
+//   name: 'Name',
+//   link: 'http://127.0.0.1:5501/images/kusto.jpg'
+// };
+
+
+// const cardRenderer = new Section();
+// cardRenderer.renderItems();
+
+
+
+
 
 // // ADD SAVED CARDS ON LOAD PAGE
 // initialCards.forEach((item) => {
