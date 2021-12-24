@@ -2,7 +2,7 @@ const rootElement = document.querySelector('.root');
 const headLogoElement = rootElement.querySelector('.header__logo');
 const editProfileButton = rootElement.querySelector('.profile__edit-button');
 const currentNameSelector = '.profile__name';
-const currentSpecialitySelector = '.profile__speciality';
+const currentAboutSelector = '.profile__about';
 const addNewCardButton = rootElement.querySelector('.profile__add-button');
 const placesContainerSelector = '.places';
 
@@ -11,7 +11,7 @@ const addCardForm = document.forms.addCard;
 
 const popupEditProfileSelector = '.popup_type_edit-profile';
 const inputName = document.querySelector('#input-name');
-const inputSpeciality = document.querySelector('#input-speciality');
+const inputAbout = document.querySelector('#input-about');
 
 const popupAddNewPlaceSelector = '.popup_type_add-place';
 
@@ -31,7 +31,7 @@ const settings = {
 }
 
 export {
-  rootElement, headLogoElement, editProfileButton, currentNameSelector, currentSpecialitySelector,
-  addNewCardButton, placesContainerSelector, editProfileForm, addCardForm, popupEditProfileSelector, inputName, inputSpeciality,
+  rootElement, headLogoElement, editProfileButton, currentNameSelector, currentAboutSelector,
+  addNewCardButton, placesContainerSelector, editProfileForm, addCardForm, popupEditProfileSelector, inputName, inputAbout,
   popupAddNewPlaceSelector, popupImagePreviewSelector, popupImagePreviewFigure, popupImageElement, popupImagePreviewFigCaption, settings
 };

@@ -1,11 +1,11 @@
-.profile__speciality {
+.profile__about {
   margin: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 @media screen and (max-width: 689px) {
-  .profile__speciality {
+  .profile__about {
     text-align: center;
   }
 }

@@ -1,18 +1,21 @@
 export default class UserInfo {
-  constructor(nameSelector, specialitySelector) {
+  constructor(nameSelector, aboutSelector, api) {
     this._name = document.querySelector(nameSelector);
-    this._speciality = document.querySelector(specialitySelector);
+    this._about = document.querySelector(aboutSelector);
+    this._avatar = document.querySelector('.profile__avatar')
+    this._api = api;
   }
 
   getUserInfo() {
     return {
       name: this._name.textContent,
-      speciality: this._speciality.textContent
+      about: this._about.textContent
     };
   }
 
-  setUserInfo({name, speciality}) {
+  setUserInfo({name, about, avatar}) {
     this._name.textContent = name;
-    this._speciality.textContent = speciality;
+    this._about.textContent = about;
+    if(avatar) this._avatar.src = avatar;
   }
 }

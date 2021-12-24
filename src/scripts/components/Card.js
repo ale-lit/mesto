@@ -1,9 +1,14 @@
 export default class Card {
-  constructor(data, template, handleCardClick) {
+  constructor({data, handleCardClick, handleLikeClick, handleDeleteIconClick}, templateSelector, currentUserId) {
     this._name = data.name;
     this._image = data.link;
-    this._templateSelector = template;
+    this._id = data._id;
+    this._ownerId = data.owner._id;
+    this._currentUserId = currentUserId;
     this._handleCardClick = handleCardClick;
+    this._handleLikeClick = handleLikeClick;
+    this._handleDeleteIconClick = handleDeleteIconClick;
+    this._templateSelector = templateSelector;
   }
 
   _getTemplate() {
@@ -21,6 +26,10 @@ export default class Card {
     placePhoto.src = this._image;
     placePhoto.alt = this._name;
 
+    if(this._ownerId !== this._currentUserId) {
+      this._element.querySelector('.place__delete').remove();
+    }
+
     // Add Events
     this._setEventListeners();
 
@@ -29,12 +38,16 @@ export default class Card {
 
   _setEventListeners() {
     // Like
-    this._element.querySelector('.place__like').addEventListener('click', this._toggleLike);
+    this._element.querySelector('.place__like').addEventListener('click', () => {
+      this._handleLikeClick(this);
+    });
 
     // Delete
-    this._element.querySelector('.place__delete').addEventListener('click', () => {
-      this._deletePlace();
-    });
+    if(this._element.querySelector('.place__delete')) {
+      this._element.querySelector('.place__delete').addEventListener('click', () => {
+        this._handleDeleteIconClick(this);
+      });
+    }
 
     // Preview
     this._element.querySelector('.place__photo').addEventListener('click', () => {
@@ -45,11 +58,5 @@ export default class Card {
   // Likes
   _toggleLike(evt) {
     evt.target.classList.toggle('place__like_active');
-  }
-
-  // Delete Card
-  _deletePlace() {
-    this._element.remove();
-    this._element = null;
   }
 }
