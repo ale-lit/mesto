@@ -1,4 +1,3 @@
-//import initialCards from '../scripts/utils/initialCards.js';
 import FormValidator from '../scripts/components/FormValidator.js';
 import {
   rootElement, headLogoElement, editProfileButton, currentNameSelector, currentAboutSelector, addNewCardButton,
@@ -27,15 +26,6 @@ const popupAvatarEdit = new PopupWithForm(popupEditAvatarSelector, (formData) =>
 );
 popupAvatarEdit.setEventListeners();
 
-// const cardsList = new Section(
-//   {
-//     renderer: (item) => {
-//       cardsList.addItem(createCard(item));
-//     },
-//   },
-//   placesContainerSelector
-// );
-
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-33',
   headers: {
@@ -44,14 +34,11 @@ const api = new Api({
   }
 });
 
-
 let currentUserId = '';
 
 // UserInfo
 const getUserInfo = api.getUserInfo().then((result) => {
-
   currentUserId = result._id;
-
   userInfo.setUserInfo(result);
 });
 
@@ -61,109 +48,12 @@ Promise.all([getUserInfo]).then(() => {
   api.getInitialCards().then(initialCards => {
     const cardsList = new Section({ items: initialCards, renderer: (item) => {
       cardsList.addItem(createCard(item, currentUserId));
-      // console.log(123 + currentUserId);
     }
     }, placesContainerSelector);
     // RENDER CARDS
     cardsList.renderItems();
   })
 });
-
-
-// const cardsList = new Section({ items: initialCards, renderer: (item) => {
-//   cardsList.addItem(createCard(item));
-// }
-// }, placesContainerSelector);
-
-// POST NEW CARD
-// api.getInitialCards().then(initialCards => {
-//   const cardsList = new Section({ items: initialCards, renderer: (item) => {
-//     cardsList.addItem(createCard(item));
-//   }
-//   }, placesContainerSelector);
-//   // RENDER CARDS
-//   cardsList.renderItems();
-// })
-
-
-
-// .then(result => {
-//   //console.log(result);
-
-//    return result;
-//  })
-//  .catch((err) => {
-//    console.log(err);
-//  });
-
-// console.log(api.getUserInfo());
-
-
-// Карточки (пока нету)
-// fetch('https://mesto.nomoreparties.co/v1/cohort-33/cards', {
-//   headers: {
-//     authorization: 'f5c43062-fa6e-4cd2-82d1-ae866fc3359c'
-//   }
-// })
-// .then(res => res.json())
-// .then((result) => {
-//   console.log(333 + result);
-// });
-
-
-
-// // Edit UserInfo
-// fetch('https://mesto.nomoreparties.co/v1/cohort-33/users/me', {
-//   method: 'PATCH',
-//   headers: {
-//     authorization: 'f5c43062-fa6e-4cd2-82d1-ae866fc3359c',
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify({
-//     name: 'Marie Skłodowska Curie1',
-//     about: 'Physicist and Chemist'
-//   })
-// })
-// .then(res => res.json())
-// .then((result) => {
-//   //console.log(result);
-
-//   // const obj = {
-//   //   name: result.name,
-//   //   speciality: result.about
-//   // }
-
-//   // userInfo.setUserInfo(obj);
-
-//   // console.log(result.name);
-//   // console.log(result.about);
-//   // console.log(result.avatar);
-
-//   // document.querySelector('.profile__avatar').src = result.avatar;
-// });
-
-// api.editUserInfo('Петр', 'Продюсер');
-
-
-// Add New Card
-// fetch('https://mesto.nomoreparties.co/v1/cohort-33/cards', {
-//   method: 'POST',
-//   headers: {
-//     authorization: 'f5c43062-fa6e-4cd2-82d1-ae866fc3359c',
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify({
-//     name: 'Байкал',
-//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-//   })
-// }).then(res => res.json())
-// .then((result) => {
-//   console.log(result);
-// });
-
-//api.postCard('Байкал', 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg');
-
-
 
 headLogoElement.addEventListener('click', changeTheme);
 
@@ -181,7 +71,6 @@ addNewCardButton.addEventListener('click', () => {
 });
 
 const popupAddCard = new PopupWithForm(popupAddNewPlaceSelector, (item) => {
-  console.log(item);
     api.postCard(item.name, item.link)
       .then(res => {
           const cardsList = new Section({ items: res, renderer: (item) => {
@@ -200,7 +89,10 @@ popupAddCard.setEventListeners();
 const userInfo = new UserInfo(currentNameSelector, currentAboutSelector);
 
 const popupUserEdit = new PopupWithForm(popupEditProfileSelector, (formData) => {
-    userInfo.setUserInfo(formData);
+    api.editUserInfo(formData.name, formData.about)
+      .then(res => {
+        userInfo.setUserInfo(formData);
+      })
   }
 );
 popupUserEdit.setEventListeners();
@@ -217,15 +109,16 @@ function createCard(data, currentUserId) {
       popupWithImage.open(data);
     },
     handleLikeClick: (card) => {
+
+
+
       console.log(card);
-      console.log(card._likes);
-
-
       if(card._likes.length === 0) {
         api.addLike(card._id)
           .then((res) => {
               card._element.querySelector('.place__like').classList.add('place__like_active');
               card._element.querySelector('.place__like-num').textContent = res.likes.length;
+              card._likes = res.likes;
             }
           )
       } else {
@@ -241,6 +134,7 @@ function createCard(data, currentUserId) {
             .then((res) => {
                 card._element.querySelector('.place__like').classList.remove('place__like_active');
                 card._element.querySelector('.place__like-num').textContent = res.likes.length;
+                card._likes = res.likes;
               }
             )
         } else {
@@ -248,36 +142,11 @@ function createCard(data, currentUserId) {
             .then((res) => {
                 card._element.querySelector('.place__like').classList.add('place__like_active');
                 card._element.querySelector('.place__like-num').textContent = res.likes.length;
+                card._likes = res.likes;
               }
             )
         }
       }
-
-      // card._likes.forEach(() => {console.log(222)})
-
-      card._likes.forEach(likeData => {
-        if(likeData._id === currentUserId) {
-          console.log(321);
-          api.delLike(card._id)
-          .then((res) => {
-              document.querySelector('.place__like-num').textContent = res.likes.length;
-            }
-          )
-        } else {
-          console.log(123);
-          api.addLike(card._id)
-          .then((res) => {
-              document.querySelector('.place__like-num').textContent = res.likes.length;
-            }
-          )
-        }
-        console.log(456);
-      })
-
-      // console.log(card)
-        // card.target.classList.toggle('place__like_active');
-      // card.target.classList.toggle('place__like_active');
-      // card._toggleLike;
     },
     handleDeleteIconClick: (card) => {
       api.deleteCard(card._id)
@@ -288,13 +157,6 @@ function createCard(data, currentUserId) {
       )
     }
   }, '#place', currentUserId);
-
-
-    // const card = new Card(item, '#place', () => {
-    //   popupWithImage.open(item);
-    // }, api, currentUser);
-
-
 
     const cardElement = card.generateCard();
     return cardElement;
