@@ -6,7 +6,7 @@
 .header__logo{background:url(bbe2a6eafac19c3d031c.svg) no-repeat;background-size:contain;cursor:pointer;height:33px;transition:all .3s ease-in-out;width:142px}.header__logo:hover{opacity:.5}@media screen and (max-width:939px){.header__logo{margin-left:6px;max-width:142px;width:33.33333vw}}
 .header__logo_theme_light{background-image:url(1b8862f13831a1b05747.svg)}
 .profile{align-items:center;display:flex;gap:30px;padding-top:40px}@media screen and (max-width:689px){.profile{flex-direction:column;gap:26px}}
-.profile__avatar-container{position:relative}.profile__avatar-container:after{content:"";cursor:pointer;display:block;height:120px;position:absolute;top:0;transition:all .3s ease-in-out;width:120px}.profile__avatar-container:hover:after{background:rgba(0,0,0,.8) url(ae1a976ddb506239e9f0.svg) 50% no-repeat}
+.profile__avatar-container{position:relative}.profile__avatar-container:after{border-radius:50%;content:"";cursor:pointer;display:block;height:120px;position:absolute;top:0;transition:all .3s ease-in-out;width:120px}.profile__avatar-container:hover:after{background:rgba(0,0,0,.8) url(ae1a976ddb506239e9f0.svg) 50% no-repeat}
 .profile__avatar{border-radius:50%;display:block;height:120px;width:120px}
 .profile__info{flex-basis:550px;max-width:550px;position:relative;width:calc(100vw - 355px)}@media screen and (max-width:689px){.profile__info{flex-basis:auto;text-align:center;width:calc(100vw - 66px)}}
 .profile__info-inner{align-items:center;display:flex}@media screen and (max-width:689px){.profile__info-inner{justify-content:center}}
