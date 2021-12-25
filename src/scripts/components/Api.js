@@ -76,12 +76,6 @@ export default class Api {
     .then(res => this._checkApiResponse(res));
   }
 
-
-
-
-
-
-
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, { headers: this.headers })
     .then(res => this._checkApiResponse(res));

@@ -22,6 +22,9 @@ const popupSubmit = new PopupWithSubmit('.popup_type_submit', (card) => {
           card._element = null;
         }
       )
+      .catch((err) => {
+        console.log(err);
+      });
 });
 popupSubmit.setEventListeners();
 
@@ -35,6 +38,9 @@ const popupAvatarEdit = new PopupWithForm(popupEditAvatarSelector, (formData) =>
       .then(res => {
         document.querySelector('.profile__avatar').src = res.avatar;
       })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 );
 popupAvatarEdit.setEventListeners();
@@ -50,23 +56,35 @@ const api = new Api({
 let currentUserId = '';
 
 // UserInfo
-const getUserInfo = api.getUserInfo().then((result) => {
-  currentUserId = result._id;
-  userInfo.setUserInfo(result);
-});
-
-
-Promise.all([getUserInfo]).then(() => {
-  // ADD SAVED CARDS ON LOAD PAGE
-  api.getInitialCards().then(initialCards => {
-    const cardsList = new Section({ items: initialCards, renderer: (item) => {
-      cardsList.addItem(createCard(item, currentUserId));
-    }
-    }, placesContainerSelector);
-    // RENDER CARDS
-    cardsList.renderItems();
+const getUserInfo = api.getUserInfo()
+  .then((result) => {
+    currentUserId = result._id;
+    userInfo.setUserInfo(result);
   })
-});
+  .catch((err) => {
+    console.log(err);
+  });
+
+
+Promise.all([getUserInfo])
+  .then(() => {
+    // ADD SAVED CARDS ON LOAD PAGE
+    api.getInitialCards()
+      .then(initialCards => {
+        const cardsList = new Section({ items: initialCards, renderer: (item) => {
+          cardsList.addItem(createCard(item, currentUserId));
+        }
+        }, placesContainerSelector);
+        // RENDER CARDS
+        cardsList.renderItems();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 headLogoElement.addEventListener('click', changeTheme);
 
@@ -94,6 +112,9 @@ const popupAddCard = new PopupWithForm(popupAddNewPlaceSelector, (item) => {
           cardsList.addItem(createCard(res, currentUserId));
         }
       )
+      .catch((err) => {
+        console.log(err);
+      });
   }
 );
 popupAddCard.setEventListeners();
@@ -106,6 +127,9 @@ const popupUserEdit = new PopupWithForm(popupEditProfileSelector, (formData) => 
       .then(() => {
         userInfo.setUserInfo(formData);
       })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 );
 popupUserEdit.setEventListeners();
@@ -122,10 +146,6 @@ function createCard(data, currentUserId) {
       popupWithImage.open(data);
     },
     handleLikeClick: (card) => {
-
-
-
-      console.log(card);
       if(card._likes.length === 0) {
         api.addLike(card._id)
           .then((res) => {
@@ -134,6 +154,9 @@ function createCard(data, currentUserId) {
               card._likes = res.likes;
             }
           )
+          .catch((err) => {
+            console.log(err);
+          });
       } else {
         let myLike = false;
         card._likes.forEach(likeData => {
@@ -150,6 +173,9 @@ function createCard(data, currentUserId) {
                 card._likes = res.likes;
               }
             )
+            .catch((err) => {
+              console.log(err);
+            });
         } else {
           api.addLike(card._id)
             .then((res) => {
@@ -158,6 +184,9 @@ function createCard(data, currentUserId) {
                 card._likes = res.likes;
               }
             )
+            .catch((err) => {
+              console.log(err);
+            });
         }
       }
     },

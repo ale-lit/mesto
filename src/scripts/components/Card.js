@@ -18,8 +18,6 @@ export default class Card {
   }
 
   generateCard() {
-
-
     this._element = this._getTemplate();
 
     const placePhoto = this._element.querySelector('.place__photo');
@@ -62,9 +60,4 @@ export default class Card {
       this._handleCardClick();
     });
   }
-
-  // // Likes
-  // _toggleLike(evt) {
-  //   evt.target.classList.toggle('place__like_active');
-  // }
 }

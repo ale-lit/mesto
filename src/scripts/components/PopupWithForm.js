@@ -20,6 +20,7 @@ export default class PopupWithForm extends Popup {
     super.setEventListeners();
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
+      this._form.querySelector('.popup__save-button').value = 'Сохранение...'
       this._handleFormSubmit(this._getInputValues());
       this.close();
     });
