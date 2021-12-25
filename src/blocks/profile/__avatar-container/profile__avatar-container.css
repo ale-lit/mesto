@@ -10,6 +10,7 @@
   display: block;
   cursor: pointer;
   transition: all .3s ease-in-out;
+  border-radius: 50%;
 }
 .profile__avatar-container:hover::after {
   background: rgba(0, 0, 0, 0.8) url('../../../images/svg/change-avatar.svg') center no-repeat;
