@@ -1,0 +1,16 @@
+.profile__avatar-container {
+  position: relative;
+}
+.profile__avatar-container::after {
+  position: absolute;
+  top: 0;
+  content: '';
+  width: 120px;
+  height: 120px;
+  display: block;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+.profile__avatar-container:hover::after {
+  background: rgba(0, 0, 0, 0.8) url('../../../images/svg/change-avatar.svg') center no-repeat;
+}

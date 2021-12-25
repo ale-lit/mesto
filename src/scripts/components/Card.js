@@ -2,6 +2,8 @@ export default class Card {
   constructor({data, handleCardClick, handleLikeClick, handleDeleteIconClick}, templateSelector, currentUserId) {
     this._name = data.name;
     this._image = data.link;
+    this._likes = data.likes;
+    console.log(data);
     this._id = data._id;
     this._ownerId = data.owner._id;
     this._currentUserId = currentUserId;
@@ -17,6 +19,8 @@ export default class Card {
   }
 
   generateCard() {
+
+
     this._element = this._getTemplate();
 
     const placePhoto = this._element.querySelector('.place__photo');
@@ -25,6 +29,11 @@ export default class Card {
     this._element.querySelector('.place__name').textContent = this._name;
     placePhoto.src = this._image;
     placePhoto.alt = this._name;
+    this._element.querySelector('.place__like-num').textContent = this._likes.length;
+
+    this._likes.forEach(item => {
+      if(item._id === this._currentUserId) this._element.querySelector('.place__like').classList.add('place__like_active');
+    })
 
     if(this._ownerId !== this._currentUserId) {
       this._element.querySelector('.place__delete').remove();
@@ -55,8 +64,8 @@ export default class Card {
     });
   }
 
-  // Likes
-  _toggleLike(evt) {
-    evt.target.classList.toggle('place__like_active');
-  }
+  // // Likes
+  // _toggleLike(evt) {
+  //   evt.target.classList.toggle('place__like_active');
+  // }
 }

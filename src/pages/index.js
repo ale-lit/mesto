@@ -204,8 +204,65 @@ function createCard(data, currentUserId) {
       popupWithImage.open(data);
     },
     handleLikeClick: (card) => {
-      console.log(card)
-        card.target.classList.toggle('place__like_active');
+      console.log(card);
+      console.log(card._likes);
+
+
+      if(card._likes.length === 0) {
+        api.addLike(card._id)
+          .then((res) => {
+              card._element.querySelector('.place__like').classList.add('place__like_active');
+              card._element.querySelector('.place__like-num').textContent = res.likes.length;
+            }
+          )
+      } else {
+        let myLike = false;
+        card._likes.forEach(likeData => {
+          if(likeData._id === currentUserId) {
+            myLike = true;
+          }
+        })
+
+        if(myLike) {
+          api.delLike(card._id)
+            .then((res) => {
+                card._element.querySelector('.place__like').classList.remove('place__like_active');
+                card._element.querySelector('.place__like-num').textContent = res.likes.length;
+              }
+            )
+        } else {
+          api.addLike(card._id)
+            .then((res) => {
+                card._element.querySelector('.place__like').classList.add('place__like_active');
+                card._element.querySelector('.place__like-num').textContent = res.likes.length;
+              }
+            )
+        }
+      }
+
+      // card._likes.forEach(() => {console.log(222)})
+
+      card._likes.forEach(likeData => {
+        if(likeData._id === currentUserId) {
+          console.log(321);
+          api.delLike(card._id)
+          .then((res) => {
+              document.querySelector('.place__like-num').textContent = res.likes.length;
+            }
+          )
+        } else {
+          console.log(123);
+          api.addLike(card._id)
+          .then((res) => {
+              document.querySelector('.place__like-num').textContent = res.likes.length;
+            }
+          )
+        }
+        console.log(456);
+      })
+
+      // console.log(card)
+        // card.target.classList.toggle('place__like_active');
       // card.target.classList.toggle('place__like_active');
       // card._toggleLike;
     },
