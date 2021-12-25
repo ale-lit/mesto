@@ -8,9 +8,22 @@ import Section from '../scripts/components/Section.js';
 import Card from '../scripts/components/Card.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import PopupWithSubmit from '../scripts/components/PopupWithSubmit.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 import Api from '../scripts/components/Api.js';
 import './index.css';
+
+
+
+const popupSubmit = new PopupWithSubmit('.popup_type_submit', (card) => {
+  api.deleteCard(card._id)
+      .then(() => {
+          card._element.remove();
+          card._element = null;
+        }
+      )
+});
+popupSubmit.setEventListeners();
 
 
 avatarContainerElement.addEventListener('click', () => {
@@ -90,7 +103,7 @@ const userInfo = new UserInfo(currentNameSelector, currentAboutSelector);
 
 const popupUserEdit = new PopupWithForm(popupEditProfileSelector, (formData) => {
     api.editUserInfo(formData.name, formData.about)
-      .then(res => {
+      .then(() => {
         userInfo.setUserInfo(formData);
       })
   }
@@ -149,12 +162,8 @@ function createCard(data, currentUserId) {
       }
     },
     handleDeleteIconClick: (card) => {
-      api.deleteCard(card._id)
-      .then(() => {
-          card._element.remove();
-          card._element = null;
-        }
-      )
+      popupSubmit.setId(card);
+      popupSubmit.open();
     }
   }, '#place', currentUserId);
 
