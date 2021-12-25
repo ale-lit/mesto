@@ -1,9 +1,9 @@
 //import initialCards from '../scripts/utils/initialCards.js';
 import FormValidator from '../scripts/components/FormValidator.js';
 import {
-  rootElement, headLogoElement, editProfileButton, currentNameSelector, currentAboutSelector,
-  addNewCardButton, placesContainerSelector, editProfileForm, addCardForm, popupEditProfileSelector, popupImagePreviewSelector, inputName, inputAbout,
-  popupAddNewPlaceSelector, settings
+  rootElement, headLogoElement, editProfileButton, currentNameSelector, currentAboutSelector, addNewCardButton,
+  placesContainerSelector, editProfileForm, addCardForm, editAvatarForm, popupEditProfileSelector, popupImagePreviewSelector,
+  inputName, inputAbout, avatarContainerElement, popupEditAvatarSelector, popupAddNewPlaceSelector, settings
 } from '../scripts/utils/constants.js';
 import Section from '../scripts/components/Section.js';
 import Card from '../scripts/components/Card.js';
@@ -13,6 +13,19 @@ import UserInfo from '../scripts/components/UserInfo.js';
 import Api from '../scripts/components/Api.js';
 import './index.css';
 
+
+avatarContainerElement.addEventListener('click', () => {
+  popupAvatarEdit.open();
+});
+
+const popupAvatarEdit = new PopupWithForm(popupEditAvatarSelector, (formData) => {
+    api.changeAvatar(formData.link)
+      .then(res => {
+        document.querySelector('.profile__avatar').src = res.avatar;
+      })
+  }
+);
+popupAvatarEdit.setEventListeners();
 
 // const cardsList = new Section(
 //   {
@@ -311,3 +324,6 @@ profileFormValidator.enableValidation();
 
 const newCardFormValidator = new FormValidator(settings, addCardForm);
 newCardFormValidator.enableValidation();
+
+const avatarFormValidator = new FormValidator(settings, editAvatarForm);
+avatarFormValidator.enableValidation();

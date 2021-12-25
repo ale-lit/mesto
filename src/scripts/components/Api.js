@@ -53,7 +53,28 @@ export default class Api {
     .then(res => this._checkApiResponse(res));
   }
 
+  changeAvatar(link) {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar: link
+      })
+    })
+    .then(res => this._checkApiResponse(res));
+  }
 
+  editUserInfo(name, about) {
+    return fetch(`${this.baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify({
+        name: name,
+        about: about
+      })
+    })
+    .then(res => this._checkApiResponse(res));
+  }
 
 
 
@@ -64,44 +85,5 @@ export default class Api {
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, { headers: this.headers })
     .then(res => this._checkApiResponse(res));
-  }
-
-  editUserInfo(name, about) {
-    return fetch(`${this.baseUrl}/users/me`, {
-        method: 'PATCH',
-        headers: this.headers,
-        body: JSON.stringify({
-          name: name,
-          about: about
-        })
-      })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(`Ошибка получения информации о пользователе: ${res.status}`);
-      })
-      .then((result) => {
-        return result;
-
-        // console.log(result);
-
-        // const obj = {
-        //   name: result.name,
-        //   speciality: result.about
-        // }
-
-        // userInfo.setUserInfo(obj);
-
-        // console.log(result.name);
-        // console.log(result.about);
-        // console.log(result.avatar);
-
-        //document.querySelector('.profile__avatar').src = result.avatar;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 }
