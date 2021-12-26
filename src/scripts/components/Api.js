@@ -80,4 +80,8 @@ export default class Api {
     return fetch(`${this.baseUrl}/users/me`, { headers: this.headers })
     .then(res => this._checkApiResponse(res));
   }
+
+  getAllNeededData() {
+    return Promise.all([this.getInitialCards(), this.getUserInfo()])
+  }
 }

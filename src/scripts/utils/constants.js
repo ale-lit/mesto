@@ -3,6 +3,7 @@ const headLogoElement = rootElement.querySelector('.header__logo');
 const editProfileButton = rootElement.querySelector('.profile__edit-button');
 const currentNameSelector = '.profile__name';
 const currentAboutSelector = '.profile__about';
+const currentAvatarSelector = '.profile__avatar';
 const addNewCardButton = rootElement.querySelector('.profile__add-button');
 const placesContainerSelector = '.places';
 
@@ -35,7 +36,7 @@ const settings = {
 }
 
 export {
-  rootElement, headLogoElement, editProfileButton, currentNameSelector, currentAboutSelector, addNewCardButton, placesContainerSelector,
+  rootElement, headLogoElement, editProfileButton, currentNameSelector, currentAboutSelector, currentAvatarSelector, addNewCardButton, placesContainerSelector,
   editProfileForm, addCardForm, editAvatarForm, popupEditProfileSelector, inputName, inputAbout, avatarContainerElement, popupEditAvatarSelector,
   popupAddNewPlaceSelector, popupImagePreviewSelector, popupImagePreviewFigure, popupImageElement, popupImagePreviewFigCaption, settings
 };

@@ -45,7 +45,7 @@ export default class Card {
   _setEventListeners() {
     // Like
     this._element.querySelector('.place__like').addEventListener('click', () => {
-      this._handleLikeClick(this);
+      this._handleLikeClick(this._id, this._checkIsLiked());
     });
 
     // Delete
@@ -59,5 +59,39 @@ export default class Card {
     this._element.querySelector('.place__photo').addEventListener('click', () => {
       this._handleCardClick();
     });
+  }
+
+  _checkIsLiked() {
+    let isLiked = false;
+
+    if(this._likes.length === 0) {
+      isLiked = false;
+    } else {
+      let myLike = false;
+      this._likes.forEach(likeData => {
+        if(likeData._id === this._currentUserId) {
+          myLike = true;
+        }
+      })
+
+      if(myLike) {
+        isLiked = true;
+      } else {
+        isLiked = false;
+      }
+    }
+
+    return isLiked;
+  }
+
+  updateLikes(likes, add) {
+    const likeElement = this._element.querySelector('.place__like');
+    if(add) {
+      likeElement.classList.add('place__like_active');
+    } else {
+      likeElement.classList.remove('place__like_active');
+    }
+    this._element.querySelector('.place__like-num').textContent = likes.length;
+    this._likes = likes;
   }
 }
