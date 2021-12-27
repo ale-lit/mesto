@@ -57,10 +57,14 @@ const api = new Api({
 });
 
 let currentUserId;
-let cardsList;
+
+const cardsList = new Section((item) => {
+    cardsList.addItem(createCard(item, currentUserId));
+  }, placesContainerSelector
+);
 
 // UserInfo
-const getUserInfo = api.getUserInfo()
+api.getUserInfo()
   .then((result) => {
     currentUserId = result._id;
     userInfo.setUserInfo(result);
@@ -72,12 +76,7 @@ const getUserInfo = api.getUserInfo()
 // ADD SAVED CARDS ON LOAD PAGE
 api.getAllNeededData()
   .then(data => {
-    cardsList = new Section({ items: data[0], renderer: (item) => {
-      cardsList.addItem(createCard(item, currentUserId));
-    }
-    }, placesContainerSelector);
-    // RENDER CARDS
-    cardsList.renderItems();
+    cardsList.renderItems(data[0]);
   })
   .catch((err) => {
     console.log(err);
@@ -101,11 +100,6 @@ addNewCardButton.addEventListener('click', () => {
 const popupAddCard = new PopupWithForm(popupAddNewPlaceSelector, (item) => {
     api.postCard(item.name, item.link)
       .then(res => {
-          cardsList = new Section({ items: res, renderer: (item) => {
-            cardsList.addItem(createCard(item, currentUserId));
-          }
-          }, placesContainerSelector);
-
           cardsList.addItem(createCard(res, currentUserId));
           popupAddCard.close();
         }
